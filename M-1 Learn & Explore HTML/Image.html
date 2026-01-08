@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image</title>
+  </head>
+  <body>
+    <!-- use image in the web page -->
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS9xW8fg9olQb6VXHDv4R1QKmIxREMQklaqw&s"
+      alt="Coding a child"
+    />
+
+    <!-- img with a width -->
+    <img src="img.png" width="300" />
+
+    <!-- Loading -->
+    <img src="banner.jpg" loading="lazy" alt="Banner" />
+
+    <!-- Local Image -->
+    <img src="./images/logo.png" alt="Logo" />
+
+    <!-- Image as a link   -->
+    <a href="">
+      <a href="/">
+        <img src="logo.png" alt="Home" />
+      </a>
+    </a>
+
+    <!-- Advance Image tag -->
+    <img
+      src="small.jpg"
+      srcset="small.jpg 480w, medium.jpg 768w, large.jpg 1200w"
+      sizes="(max-width: 600px) 100vw, 50vw"
+      alt="Responsive image"
+    />
+  </body>
+</html>
