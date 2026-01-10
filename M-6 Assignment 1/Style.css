@@ -1,0 +1,195 @@
+/* shareable style */
+.btn {
+  background-color:rgb(22, 184, 233);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn1 {
+  background-color:rgb(22, 184, 233);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-img {
+  width: 150px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  font-size: small;
+}
+
+#card-paragraph {
+  font-size: 13px;
+  color: gray;
+  padding: 10px 0px 10px 0px;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar Design */
+#nav {
+  width: 90%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px 0px 15px 0px;
+  /* border: 5px solid rebeccapurple; */
+}
+
+#nav-list {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Banner Design  */
+#banner {
+  width: 100%;
+  height: 450px;
+  color: white;
+  background-image: url("assets/hero-bg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#banner-container {
+  text-align: center;
+  margin-top: 10px;
+  padding-top: 10%;
+  font-size: larger;
+}
+
+#banner-heading {
+  color: rgb(231, 230, 230);
+  margin-top: 5px;
+}
+#banner-heading1 {
+  color: rgb(22, 184, 233);
+  margin-top: 5px;
+}
+
+#banner-paragraph {
+  width: 350px;
+  display: flex;
+  font-size: small;
+  margin: 10px auto 10px auto;
+  padding: 10px 0px 5px 0px;
+  color: rgb(231, 230, 230);
+}
+
+#card-heading {
+  font-size: large;
+  text-align: center;
+}
+
+#card-heading-paragraph {
+  font-size: small;
+  margin-top: 5px;
+}
+
+#card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+#card {
+  width: 150px;
+  height: 140px;
+  text-align: center;
+  padding: 20px 10px 15px 10px;
+  background-color: rgb(245, 244, 244);
+  border-radius: 10%;
+}
+
+#card-img {
+  background-color: palevioletred;
+  border-radius: 50%;
+  padding: 8px;
+  width: 25px;
+  height: 25px;
+}
+
+/* Brain Section  */
+#brain {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+#brain-img {
+  width: 40%;
+}
+
+#brain-textp {
+  font-size: small;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+#brain-text {
+  width: 40%;
+}
+
+#brain-text-container {
+  flex-direction: column;
+  gap: 20px;
+}
+
+#ready {
+  width: 80%;
+  text-align: center;
+  height: 200px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto 50px auto;
+  background-color: rgb(241, 240, 240);
+  padding: 20px 0px 20px 0px;
+}
+
+#footer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 25, 49, 1);
+  width: auto;
+  height: 250px;
+  align-items: center;
+  padding: 0px 80px 0px 80px;
+}
+
+#footer-text {
+  color: white;
+}
+
+#footer-paragrph {
+  color: white;
+  background-color: rgba(0, 25, 49, 1);
+  font-size: small;
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
