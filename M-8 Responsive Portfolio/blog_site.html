@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Site</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        nav {
+            width: auto;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: antiquewhite;
+            padding: 20px;
+        }
+        nav>ul {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+        }
+
+        #container{
+            display: flex;
+            gap: 100px;
+            justify-content: space-evenly;
+            margin-top: 50px;
+
+            width: auto;
+            height: 300px;
+            border: 1px solid red ;
+        }
+        #left {
+            width: 150%;
+            height: 300px;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px solid red; */
+        }
+        #right {
+            width: 150%;
+            height: 300px;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px solid red; */
+        }
+        #middle {
+            width: 300%;
+            height: 300px;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px solid red; */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>My Nav</h1>
+        <ul>
+            <li>Home</li>
+            <li>Menu</li>
+            <li>Contract </li>
+            <li>About</li>
+        </ul>
+    </nav>
+
+    <main id="container">
+        <!-- right side  -->
+         <div>
+            <h1 id="right">Right Side</h1>
+         </div>
+        <!-- Middle -->
+         <div>
+            <h1 id="middle">Middle side</h1>
+         </div>
+        <!-- Left side -->
+         <div>
+            <h1 id="left">Left Side </h1>
+         </div>
+    </main>
+</body>
+</html>
