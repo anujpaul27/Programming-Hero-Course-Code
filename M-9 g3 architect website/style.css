@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@75,200..900&display=swap");
+
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400px;
+  font-style: normal;
+  font-variation-settings: "wdth" 30;
+}
+
+header {
+    background-color: antiquewhite;
+}
+/* Navbar */
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0px 20px 0px;
+}
+
+#item-container{
+    list-style: none;    
+    display: flex;
+    gap: 15px;
+}
+
+
+/* Heading */
+#heading {
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+    margin: 5% auto 10px auto;
+    font-size: x-large;
+}
+#heading-paragraph {
+    font-size: small;
+    margin: 10px auto 10px auto;
+}
+#heading-btn {
+    border: none;
+    padding: 1.5%;
+    background-color: orange;
+    border-radius: 0.5rem;
+}
+#heading-img {
+    display: flex;
+    width: 70%;
+    margin: 20px auto 0px auto;
+    padding-bottom: 20px;
+}
