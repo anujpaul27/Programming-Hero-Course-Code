@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition</title>
+    <style>
+        .container{
+            width: 100px;   
+            height: 100px;
+        }
+        .inner{
+            width: 80px;
+            height: 80px;
+        }
+        .container {
+            background-color: antiquewhite;
+            border: 1px solid rebeccapurple;
+        }
+        .inner {
+            background-color: aquamarine;
+            transform: translate(10px,0px);
+            /* transform: rotate(45deg); */
+            /* transform: scale(0.5); */
+        }
+        .inner:hover {
+            /* width: 300px; */
+            /* transition-duration: 5s; */
+            transition: ease-in-out,1s ;
+            transform: scale(0.5);
+            /* transition-delay: 1s; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">Container
+        <div class="inner">inner</div>
+    </div>
+    <div class="container">Container
+        <div class="inner">inner</div>
+    </div>
+    <div class="container">Container
+        <div class="inner">inner</div>
+    </div>
+</body>
+</html>
