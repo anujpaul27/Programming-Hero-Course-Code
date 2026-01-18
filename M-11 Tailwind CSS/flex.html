@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS flex </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <nav class="flex justify-between bg-blue-500  text-white p-5 md:0">
+        <h1 class="text-xl">Logo Here </h1>
+        <!-- Why do not work md:gap-3 and also sm:gap-3 belong this code line. -->
+        <ul class="flex lg:gap-10 md:gap-3 sm:gap-3">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </nav>
+
+    
+</body>
+</html>
