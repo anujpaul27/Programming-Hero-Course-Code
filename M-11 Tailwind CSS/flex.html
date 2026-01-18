@@ -1,32 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind CSS flex </title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind CSS flex</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body>
-    <nav class="flex justify-between bg-blue-500  text-white p-5 md:0">
-        <h1 class="text-xl">Logo Here </h1>
-        <!-- Why do not work md:gap-3 and also sm:gap-3 belong this code line. -->
-        <ul class="flex lg:gap-10 md:gap-3 sm:gap-3">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Login</a></li>
-        </ul>
+  </head>
+  <body>
+    <nav class="flex justify-between bg-blue-500 text-white p-5 md:0">
+      <h1 class="text-xl">Logo Here</h1>
+      <!-- Why do not work md:gap-3 and also sm:gap-3 belong this code line. -->
+      <ul class="flex lg:gap-10 md:gap-20 gap-3">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
     </nav>
 
     <main>
-        <header class="lg:flex gap-5 mt-20 itmes-center justify-center ">
-            <div class="lg:w-1/2 md:w-3/2 sm:w-3/2 bg-blue-100 p-5 rounded-lg">
-                <h1 class="text-5xl mt-20 text-gray-600 ">Hello, Iam Smrita Web Developer </h1>
-                <p class="text-sm text-gray-500 py-4 ">Iam help to the five stages of website development are planning, designing, coding, testing, and launching.</p>
-            </div>
-            <img class="lg:w-1/4 sm:w-1/2 rounded-lg showdow-bottom" src="profile photo.avif" alt="">
-        </header>
+      <header class="lg:flex gap-5 mt-20  itmes-center justify-center">
+        <div class="lg:w-1/2 md:w-3/2 w-[300px] mx-auto lg:mx-0 bg-blue-100 p-5 rounded-lg">
+          <h1 class="text-5xl mt-20 text-gray-600">
+            Hello, Iam Smrita Web Developer
+          </h1>
+          <p class="text-sm text-gray-500 py-4">
+            Iam help to the five stages of website development are planning,
+            designing, coding, testing, and launching.
+          </p>
+        </div>
+        <img
+          class="lg:w-1/4 sm:w-1/2 rounded-lg showdow-bottom"
+          src="profile photo.avif"
+          alt=""
+        />
+      </header>
 
-        
+      <!-- My Service Section -->
+      <!-- Service Heading  -->
+      <h1 class="text-5xl text-center py-10 text-gray-600 ">My Services</h1>
+      <section class="flex gap-10 justify-center">
+
+        <!-- Service Card  -->
+         <div class="w-50 h-50 bg-blue-200 p-7">
+            <h1 class="text-3xl">Frontend</h1>
+            <ul class="list-disc ml-4">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScrip</li>
+                <li>React </li>
+            </ul>
+         </div>
+
+         <div class="w-50 h-50 bg-blue-200 p-7">
+            <h1 class="text-3xl">BackEnd</h1>
+            <ul class="list-disc ml-4">
+                <li>Node</li>
+                <li>Express</li>
+                <li>Mongodb</li>
+                <li>Firebase</li>
+            </ul>
+         </div>
+
+         <div class="w-50 h-50 bg-blue-200 p-7">
+            <h1 class="text-3xl">AI ML</h1>
+            <ul class="list-disc ml-4">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScrip</li>
+                <li>React </li>
+            </ul>
+         </div>
+      </section>
     </main>
-</body>
+  </body>
 </html>
