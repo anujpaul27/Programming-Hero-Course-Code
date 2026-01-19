@@ -29,7 +29,9 @@
       <header
         class="lg:h-screen md:h-screen h-85 bg-[url('assets/hero-bg.png')] bg-cover bg-center"
       >
-        <div class="absolute inset-0 flex itmes-center justify-center lg:pt-20 md:pt-20 pt-10">
+        <div
+          class="absolute inset-0 flex itmes-center justify-center lg:pt-20 md:pt-20 pt-10"
+        >
           <div
             class="lg:w-70 lg:h-70 md:w-60 md:h-60 w-40 h-40 bg-[url('assets/hero-circle.png')] bg-center bg-cover"
           >
@@ -44,7 +46,7 @@
         <!-- Text -->
         <div class="text-white text-center lg:py-95 md:py-95 py-50">
           <h1 class="lg:text-5xl md:text-5xl text-2xl text-bold">TechWave</h1>
-          <p class="text-gray-400 lg:py-3 text-sm ">
+          <p class="text-gray-400 lg:py-3 text-sm">
             Your daily dose of tech insights, productivity hacks, and personal
             growth
           </p>
@@ -52,24 +54,64 @@
           <!-- Listen on Spotify Button  -->
           <div class="flex gap-3 justify-center pt-2">
             <div
-              class="bg-linear-65 from-purple-500 to-pink-500 flex justify-center items-center gap-1 lg:w-40 lg:h-10 rounded-full px-2" 
+              class="bg-linear-65 from-purple-500 to-pink-500 flex justify-center items-center gap-1 lg:w-40 lg:h-10 rounded-full px-2"
             >
-              <img class="lg:w-4 lg:h-4 md:w-4 md:h-4 w-3 h-3" src="assets/spotify.png" alt="" />
+              <img
+                class="lg:w-4 lg:h-4 md:w-4 md:h-4 w-3 h-3"
+                src="assets/spotify.png"
+                alt=""
+              />
               <h1 class="text-sm lg:text-md md:tex-md">Listen on spotify</h1>
             </div>
 
             <!-- Subscribe button  -->
             <div
-              class="border border-green-500 gap-1 lg:w-40 lg:h-10 p-2 rounded-full flex justify-center items-center "
+              class="border border-green-500 gap-1 lg:w-40 lg:h-10 p-2 rounded-full flex justify-center items-center"
             >
-              <img class="w-4 h-3"   src="assets/message.png" alt="">
-              <h1 class="text-green-500 ">Subscribe</h1>
+              <img class="w-4 h-3" src="assets/message.png" alt="" />
+              <h1 class="text-green-500">Subscribe</h1>
             </div>
           </div>
         </div>
-        
       </header>
 
+      <!-- About section -->
+      <section class="w-full h-100 bg-gray-900 text-gray-400 text-center lg:pt-0 md:pt-0 pt-8">
+        <!-- Text  -->
+        <h1 class="lg:text-3xl md:text-3xl text-2xl">About the Podcast</h1>
+        <div class="flex flex-col items-center">
+          <p class="lg:w-2/3 md:w-2/3 w-full px-5 pt-3 text-sm">
+            TechWave is your go-to podcast for staying ahead in the fast-paced
+            world of technology. We break down complex topics into digestible
+            insights, explore productivity strategies that actually work, and
+            share stories of personal growth from industry leaders.
+          </p>
+          <p class="lg:w-2/3 md:w-2/3 w-full px-5 pt-3 text-sm">
+            Join thousands of young professionals and tech enthusiasts who start
+            their day with TechWave.
+          </p>
+        </div>
+
+        <!-- Rating  -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-4 lg:pt-10 md:pt-10 mt-8">
+          <div>
+            <h1 class="text-3xl text-green-500 font-bold">150K+</h1>
+            <p class="text-sm text-gray-400">Monthly Listeners</p>
+          </div>
+          <div>
+            <h1 class="text-3xl text-green-500 font-bold">200+</h1>
+            <p class="text-sm text-gray-400">Episodes Published</p>
+          </div>
+          <div>
+            <h1 class="text-3xl text-green-500 font-bold">4.9+</h1>
+            <p class="text-sm text-gray-400">Average Rating</p>
+          </div>
+          <div>
+            <h1 class="text-3xl text-green-500 font-bold">50+</h1>
+            <p class="text-sm text-gray-400">Industry Experts</p>
+          </div>
+        </div>
+      </section>
 
       
     </main>
