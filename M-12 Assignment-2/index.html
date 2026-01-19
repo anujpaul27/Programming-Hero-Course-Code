@@ -76,7 +76,9 @@
       </header>
 
       <!-- About section -->
-      <section class="w-full h-100 bg-gray-900 text-gray-400 text-center lg:pt-0 md:pt-0 pt-8">
+      <section
+        class="w-full h-100 bg-gray-900 text-gray-400 text-center lg:pt-0 md:pt-0 pt-8"
+      >
         <!-- Text  -->
         <h1 class="lg:text-3xl md:text-3xl text-2xl">About the Podcast</h1>
         <div class="flex flex-col items-center">
@@ -93,7 +95,9 @@
         </div>
 
         <!-- Rating  -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-4 lg:pt-10 md:pt-10 mt-8">
+        <div
+          class="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-4 lg:pt-10 md:pt-10 mt-8"
+        >
           <div>
             <h1 class="text-3xl text-green-500 font-bold">150K+</h1>
             <p class="text-sm text-gray-400">Monthly Listeners</p>
@@ -113,48 +117,175 @@
         </div>
       </section>
 
-    <!-- Why Choose TechWave -->
-    <section class=" lg:h-150 md:h-150 h-250 bg-gray-800 text-white">
+      <!-- Why Choose TechWave -->
+      <section class="lg:h-150 md:h-150 h-230 bg-gray-800 text-white">
         <h1 class="text-3xl text-center pt-10">Why Choose TechWave</h1>
 
         <!-- 1st Grid Card  -->
         <div class="lg:grid grid-cols-3 grid-rows-2 lg:px-30 md:px-30 pt-8">
+          <div class="row-span-2 m-2 bg-gray-700 p-3 rounded-lg">
+            <img class="w-10 h-10" src="assets/headphone.png" alt="" />
+            <h1 class="text-lg">Premium Audio Quality</h1>
+            <p class="text-[12px] text-gray-400">
+              Experience crystal-clear sound with professional-grade recording
+              equipment and expert audio engineering. Every episode is mastered
+              for optimal listening across all devices and platforms.
+            </p>
+          </div>
 
-            <div class="row-span-2 m-2 bg-gray-700 p-3 rounded-lg">
-                <img class="w-10 h-10" src="assets/headphone.png" alt="">
-                <h1 class="text-lg">Premium Audio Quality</h1>
-                <p class="text-[12px] text-gray-400 ">Experience crystal-clear sound with professional-grade recording equipment and expert audio engineering. Every episode is mastered for optimal listening across all devices and platforms.</p>
-            </div>  
+          <div class="col-span-2 m-2 p-3 bg-gray-700 rounded-lg">
+            <img class="w-7 h-10" src="assets/device.png" alt="" />
+            <h1 class="text-lg">Premium Audio Quality</h1>
+            <p class="text-[12px] text-gray-400">
+              Listen on the go with seamless mobile experience and offline
+              downloads.
+            </p>
+          </div>
 
-            <div class="col-span-2 m-2 p-3 bg-gray-700 rounded-lg">
-                <img class="w-7 h-10" src="assets/device.png" alt="">
-                <h1 class="text-lg">Premium Audio Quality</h1>
-                <p class="text-[12px] text-gray-400">Listen on the go with seamless mobile experience and offline downloads.</p>
-            </div>
-
-            <div class="col-span-2 m-2 p-3 bg-gray-700 rounded-lg">
-                <img class="w-10 h-10" src="assets/location.png" alt="">
-                <h1 class="text-lg">Premium Audio Quality</h1>
-                <p class="text-[12px] text-gray-400">Listen on the go with seamless mobile experience and offline downloads.</p>
-            </div>          
-            
+          <div class="col-span-2 m-2 p-3 bg-gray-700 rounded-lg">
+            <img class="w-10 h-10" src="assets/location.png" alt="" />
+            <h1 class="text-lg">Premium Audio Quality</h1>
+            <p class="text-[12px] text-gray-400">
+              Listen on the go with seamless mobile experience and offline
+              downloads.
+            </p>
+          </div>
         </div>
 
         <!-- 2nd Grid card -->
-         <div class="lg:grid grid-cols-3 lg:px-30 md:px-30">
-            <div class="col-span-2 m-2 bg-gray-700 p-3 rounded-lg">
-                <img src="./assets/resource.png" alt="">
-                <h1 class="text-xl">Exclusive Interviews</h1>
-                <p class="text-[12px] text-gray-400">Get unprecedented access to industry titans, startup founders, and tech visionaries. Our host secures exclusive conversations you won't find anywhere else, diving deep into their journeys, failures, and success strategies.</p>
-            </div>
-            <div class="col-span-1 m-2 bg-gray-700 p-3 rounded-lg">
-                <img src="./assets/resource.png" alt="">
-                <h1 class="text-xl">Rich Resources</h1>
-                <p class="text-[12px] text-gray-400">Access show notes, transcripts, and additional learning materials for every episode.</p>
-            </div>
-         </div>
+        <div class="lg:grid grid-cols-3 lg:px-30 md:px-30">
+          <div class="col-span-2 m-2 bg-gray-700 p-3 rounded-lg">
+            <img src="./assets/resource.png" alt="" />
+            <h1 class="text-xl">Exclusive Interviews</h1>
+            <p class="text-[12px] text-gray-400">
+              Get unprecedented access to industry titans, startup founders, and
+              tech visionaries. Our host secures exclusive conversations you
+              won't find anywhere else, diving deep into their journeys,
+              failures, and success strategies.
+            </p>
+          </div>
+          <div class="col-span-1 m-2 bg-gray-700 p-3 rounded-lg">
+            <img src="./assets/resource.png" alt="" />
+            <h1 class="text-xl">Rich Resources</h1>
+            <p class="text-[12px] text-gray-400">
+              Access show notes, transcripts, and additional learning materials
+              for every episode.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    </section>
+      <!-- Featured Episodes -->
+      <h1 class="text-2xl text-white pt-10 text-center bg-gray-900">
+        Featured Episodes
+      </h1>
+      <section
+        class="lg:flex md:flex bg-gray-900 text-white justify-center items-center py-10"
+      >
+        <!-- Cards  -->
+        <div
+          class="bg-gray-800 lg:w-60 md:w-60 lg:m-2 md:m-2 mx-2 m-5 rounded-xl"
+        >
+          <!-- You tube video      -->
+          <div class="relative w-full pb-[56.25%]">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/1IxG7ywSNXk"
+              title="YouTube video player"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h1 class="text-md px-3 lg:pt-2 pt-4">
+            The Future of AI in Everyday Life
+          </h1>
+          <p class="text-[12px] text-gray-400 p-3">
+            Exploring how artificial intelligence is transforming our daily
+            routines and what to expect in the next decade.
+          </p>
+          <div class="px-3 py-1 flex gap-1 items-center">
+            <img class="w-3 h-3" src="./assets/clock.png" alt="" />
+            <p class="text-green-500 text-[12px]">45</p>
+          </div>
+        </div>
+        <div
+          class="bg-gray-800 lg:w-60 md:w-60 lg:m-2 md:m-2 mx-2 m-5 rounded-xl"
+        >
+          <!-- You tube video      -->
+          <div class="relative w-full pb-[56.25%]">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/0-FUhQKe-eU"
+              title="YouTube video player"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h1 class="text-md px-3 lg:pt-2 pt-4">
+            Start Earning Money With AI - Free Tools & Business Ideas
+          </h1>
+          <p class="text-[12px] text-gray-400 p-3">
+            Exploring how artificial intelligence is transforming our daily
+            routines and what to expect in the next decade.
+          </p>
+          <div class="px-3 py-1 flex gap-1 items-center">
+            <img class="w-3 h-3" src="./assets/clock.png" alt="" />
+            <p class="text-green-500 text-[12px]">45</p>
+          </div>
+        </div>
+        <div
+          class="bg-gray-800 lg:w-60 md:w-60 lg:m-2 md:m-2 mx-2 m-5 rounded-xl"
+        >
+          <!-- You tube video      -->
+          <div class="relative w-full pb-[56.25%]">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/oX7OduG1YmI"
+              title="YouTube video player"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <h1 class="text-md px-3 lg:pt-2 pt-4">
+            The Future Mark Zuckerberg Is Trying To Build
+          </h1>
+          <p class="text-[12px] text-gray-400 p-3">
+            Exploring how artificial intelligence is transforming our daily
+            routines and what to expect in the next decade.
+          </p>
+          <div class="px-3 py-1 flex gap-1 items-center">
+            <img class="w-3 h-3" src="./assets/clock.png" alt="" />
+            <p class="text-green-500 text-[12px]">45</p>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
