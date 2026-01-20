@@ -10,14 +10,14 @@
     <nav
       class="flex h-15 py-3 px-5 justify-between itmes-center bg-black text-white"
     >
-      <h1 class="text-3xl">TechWave</h1>
+      <h1 class="text-3xl font-bold">Tech<span class="bg-gradient-to-r from-purple-500 to-pink-500 font-bold bg-clip-text text-transparent">Wave</span></h1>
       <ul class="hidden lg:flex pt-1 gap-5">
         <li>About</li>
         <li>Episodes</li>
         <li>Host</li>
       </ul>
       <button
-        class="hidden bg-linear-65 from-purple-500 to-pink-500 lg:inline-block px-2 py-0 rounded-lg"
+        class="hidden bg-gradient-to-r from-purple-500 to-pink-500 font-bold  lg:inline-block px-2 py-0 rounded-lg"
       >
         Subscribe
       </button>
@@ -45,7 +45,7 @@
 
         <!-- Text -->
         <div class="text-white text-center lg:py-95 md:py-95 py-50">
-          <h1 class="lg:text-5xl md:text-5xl text-2xl text-bold">TechWave</h1>
+          <h1 class="lg:text-5xl md:text-5xl text-2xl text-bold font-bold ">Tech<span class="bg-gradient-to-r from-purple-500 to-pink-500 font-bold bg-clip-text text-transparent">Wave</span></h1>
           <p class="text-gray-400 lg:py-3 text-sm">
             Your daily dose of tech insights, productivity hacks, and personal
             growth
@@ -288,7 +288,7 @@
       </section>
 
       <!-- Met the host section -->
-      <section class="bg-gray-900 h-100 text-white">
+      <section class="bg-gray-900 lg:h-80 md:h-80 h-110 text-white">
         <h1 class="text-3xl text-center pt-5">Meet the Host</h1>
 
         <div class="lg:flex md:flex gap-3 bg-gray-800 lg:w-2/3 md:w-2/3  items-center rounded-xl lg:mx-auto md:mx-auto mx-2  my-10">
@@ -314,5 +314,32 @@
 
       </section>
     </main>
+
+    <footer class="bg-[url('assets/footer-bg.png')] h-70 bg-cover bg-center">
+      <div class="text-white flex flex-col gap-5 justify-center items-center h-full">
+        <h1 class="text-3xl font-bold">Tech<span class="bg-gradient-to-r from-purple-500 to-pink-500 font-bold bg-clip-text text-transparent">Wave</span></h1>
+        
+        <div class=" grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 grid-rows-2 gap-y-5 lg:gap-x-5 md:gap-x-5">
+
+          <div class="flex gap-1 ">
+            <img src="assets/spotify.png" alt="">
+            <p class="text-[12px]">Spotify</p>  
+          </div>
+          <div class="flex gap-1 ">
+            <img src="assets/apple-podcast.png" alt="">
+            <p class="text-[12px]">Apple Podcast</p>
+          </div>
+          <div class="flex gap-1 ">
+            <img src="assets/youtube-podcast.png" alt="">
+            <p class="text-[12px]">YouTube </p>
+          </div>
+          <div class="flex gap-1">
+            <img src="assets/twitter.png" alt="">
+            <p class="text-[12px]">Twitter</p>
+          </div>
+        </div>
+        <p class="pt-3">© 2026 TechWave Podcast. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
