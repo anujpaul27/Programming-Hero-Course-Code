@@ -10,14 +10,19 @@
     <nav
       class="flex h-15 py-3 px-5 justify-between items-center bg-black text-white"
     >
-      <h1 class="text-3xl font-bold">Tech<span class="bg-gradient-to-r from-purple-500 to-pink-500 font-bold bg-clip-text text-transparent">Wave</span></h1>
+      <h1 class="text-3xl font-bold">
+        Tech<span
+          class="bg-gradient-to-r from-purple-500 to-pink-500 font-bold bg-clip-text text-transparent"
+          >Wave</span
+        >
+      </h1>
       <ul class="hidden lg:flex pt-1 gap-5">
         <li>About</li>
         <li>Episodes</li>
         <li>Host</li>
       </ul>
       <button
-        class="hidden bg-gradient-to-r from-purple-500 to-pink-500 font-bold  lg:inline-block px-2 py-0 rounded-lg"
+        class="hidden bg-gradient-to-r from-purple-500 to-pink-500 font-bold lg:inline-block px-2 py-2 rounded-lg"
       >
         Subscribe
       </button>
@@ -25,19 +30,20 @@
     </nav>
 
     <!-- Relative and absolute Banner -->
-    <main class="relative">
+    <main>
       <header
-        class="lg:h-screen md:h-screen h-85 bg-[url('assets/hero-bg.png')] bg-cover bg-center"
+        class="lg:h-screen md:h-screen h-85 bg-[url('assets/hero-bg.png')] bg-cover bg-center relative"
       >
         <div
           class="absolute inset-0 flex itmes-center justify-center lg:pt-20 md:pt-20 pt-10"
         >
+          <div class="text-md animate-bounce bg-green-500 absolute h-7 w-12 lg:ml-40 md:ml-40 ml-20   text-center rounded-lg  ">New</div>
           <div
             class="lg:w-70 lg:h-70 md:w-60 md:h-60 w-40 h-40 bg-[url('assets/hero-circle.png')] bg-center bg-cover"
           >
-          <!-- Top Microphone image -->
+            <!-- Top Microphone image -->
             <img
-              class="lg:w-15 lg:h-20 md:w-15 md:h-20 w-10 h-15 lg:ml-27 md:ml-27 lg:ml-20 md:ml-20 lg:mt-25 md:mt-25  ml-15  mt-12 "
+              class="lg:w-15 lg:h-20 md:w-15 md:h-20 w-10 h-15 lg:ml-27 md:ml-27 lg:ml-20 md:ml-20 lg:mt-25 md:mt-25 ml-15 mt-12"
               src="assets/microphone.png"
               alt=""
             />
@@ -46,13 +52,18 @@
 
         <!-- Text -->
         <div class="text-white text-center lg:py-95 md:py-95 py-50">
-          <h1 class="lg:text-5xl md:text-5xl text-2xl text-bold font-bold ">Tech<span class="bg-gradient-to-r from-purple-500 to-pink-500 font-bold bg-clip-text text-transparent">Wave</span></h1>
+          <h1 class="lg:text-5xl md:text-5xl text-2xl text-bold font-bold">
+            Tech<span
+              class="bg-gradient-to-r from-purple-500 to-pink-500 font-bold bg-clip-text text-transparent"
+              >Wave</span
+            >
+          </h1>
           <p class="text-gray-400 lg:py-3 text-sm">
             Your daily dose of tech insights, productivity hacks, and personal
             growth
           </p>
 
-          <!-- Listen on Spotify Button  -->
+          <!-- Listen on Spotify Button  -->  
           <div class="flex gap-3 justify-center pt-2">
             <div
               class="bg-linear-65 from-purple-500 to-pink-500 flex justify-center items-center gap-1 lg:w-40 lg:h-10 rounded-full px-2"
@@ -123,7 +134,9 @@
         <h1 class="text-3xl text-center pt-10">Why Choose TechWave</h1>
 
         <!-- 1st Grid Card  -->
-        <div class="lg:grid md:grid grid-cols-3 grid-rows-2 lg:px-30 md:px-30 pt-8">
+        <div
+          class="lg:grid md:grid grid-cols-3 grid-rows-2 lg:px-30 md:px-30 pt-8"
+        >
           <div class="row-span-2 m-2 bg-gray-700 p-3 rounded-lg">
             <img class="w-10 h-10" src="assets/headphone.png" alt="" />
             <h1 class="text-lg">Premium Audio Quality</h1>
@@ -292,11 +305,17 @@
       <section class="bg-gray-900 lg:h-80 md:h-80 h-110 text-white">
         <h1 class="text-3xl text-center pt-5">Meet the Host</h1>
 
-        <div class="lg:flex md:flex gap-3 bg-gray-800 lg:w-2/3 md:w-2/3  items-center rounded-xl lg:mx-auto md:mx-auto mx-2  my-10">
+        <div
+          class="lg:flex md:flex gap-3 bg-gray-800 lg:w-2/3 md:w-2/3 items-center rounded-xl lg:mx-auto md:mx-auto mx-2 my-10"
+        >
           <img class="m-2 w-30 mx-auto" src="assets/host.png" alt="" />
           <div>
-            <h1 class="text-xl md:text-left lg:text-left text-center">Alex Kumar</h1>
-            <p class="text-[12px] md:text-left lg:text-left text-center mr-2 text-gray-500">
+            <h1 class="text-xl md:text-left lg:text-left text-center">
+              Alex Kumar
+            </h1>
+            <p
+              class="text-[12px] md:text-left lg:text-left text-center mr-2 text-gray-500"
+            >
               Tech entrepreneur, productivity expert, and lifelong learner. Alex
               has been in the tech industry for over 10 years, working with
               startups and Fortune 500 companies. Through TechWave, Alex shares
@@ -305,37 +324,58 @@
             </p>
 
             <!-- Social Icon -->
-            <div class="flex gap-3 pt-2 py-5 lg:justify-start md:justify-start justify-center ">
-              <img class="border-1 border-rose-500 p-1   rounded-full " src="assets/instagram.png" alt="">
-              <img class="border-1 border-rose-500 p-1   rounded-full " src="assets/linkedin.png" alt="">
-              <img class="border-1 border-rose-500 p-1   rounded-full " src="assets/twitter.png" alt="">
+            <div
+              class="flex gap-3 pt-2 py-5 lg:justify-start md:justify-start justify-center"
+            >
+              <img
+                class="border-1 border-rose-500 p-1 rounded-full"
+                src="assets/instagram.png"
+                alt=""
+              />
+              <img
+                class="border-1 border-rose-500 p-1 rounded-full"
+                src="assets/linkedin.png"
+                alt=""
+              />
+              <img
+                class="border-1 border-rose-500 p-1 rounded-full"
+                src="assets/twitter.png"
+                alt=""
+              />
             </div>
           </div>
         </div>
-
       </section>
     </main>
 
     <footer class="bg-[url('assets/footer-bg.png')] h-70 bg-cover bg-center">
-      <div class="text-white flex flex-col gap-5 justify-center items-center h-full">
-        <h1 class="text-3xl font-bold">Tech<span class="bg-gradient-to-r from-purple-500 to-pink-500 font-bold bg-clip-text text-transparent">Wave</span></h1>
-        
-        <div class=" grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 grid-rows-2 gap-y-5 lg:gap-x-5 md:gap-x-5">
+      <div
+        class="text-white flex flex-col gap-5 justify-center items-center h-full"
+      >
+        <h1 class="text-3xl font-bold">
+          Tech<span
+            class="bg-gradient-to-r from-purple-500 to-pink-500 font-bold bg-clip-text text-transparent"
+            >Wave</span
+          >
+        </h1>
 
-          <div class="flex gap-1 ">
-            <img src="assets/spotify.png" alt="">
-            <p class="text-[12px]">Spotify</p>  
-          </div>
-          <div class="flex gap-1 ">
-            <img src="assets/apple-podcast.png" alt="">
-            <p class="text-[12px]">Apple Podcast</p>
-          </div>
-          <div class="flex gap-1 ">
-            <img src="assets/youtube-podcast.png" alt="">
-            <p class="text-[12px]">YouTube </p>
+        <div
+          class="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 grid-rows-2 gap-y-5 lg:gap-x-5 md:gap-x-5"
+        >
+          <div class="flex gap-1">
+            <img src="assets/spotify.png" alt="" />
+            <p class="text-[12px]">Spotify</p>
           </div>
           <div class="flex gap-1">
-            <img src="assets/twitter.png" alt="">
+            <img src="assets/apple-podcast.png" alt="" />
+            <p class="text-[12px]">Apple Podcast</p>
+          </div>
+          <div class="flex gap-1">
+            <img src="assets/youtube-podcast.png" alt="" />
+            <p class="text-[12px]">YouTube</p>
+          </div>
+          <div class="flex gap-1">
+            <img src="assets/twitter.png" alt="" />
             <p class="text-[12px]">Twitter</p>
           </div>
         </div>
