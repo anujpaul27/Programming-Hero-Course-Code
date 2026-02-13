@@ -1,6 +1,3 @@
 
-const randomNumber = (min,max) => {
-    return Math.floor(Math.random()* max) +min;
-}
-
-console.log(randomNumber(10,20));
+let an = console.log('12');
+console.log(an);
