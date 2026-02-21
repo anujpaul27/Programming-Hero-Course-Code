@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile banking</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+
+    <div class="overflow-y-scroll border border-default w-60 h-120 mx-auto rounded-lg mt-10 bg-white text-black ">
+
+        <!-- Form content -->
+        <div class="card-body px-7 pb-8 pt-7 mt-10 ">
+            <form id="onSubmit" class="space-y-6">
+
+                <!-- Bank -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold text-gray-700">Select Bank</span>
+                    </label>
+                    <select
+                        class="select select-bordered border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 w-full bg-white text-gray-800">
+                        <option selected>Trust Bank PLC</option>
+                        <option>City Bank PLC</option>
+                        <option>BRAC Bank Limited</option>
+                        <option>Dutch-Bangla Bank PLC</option>
+                        <option>Eastern Bank Limited</option>
+                        <option>Other Bank...</option>
+                    </select>
+                </div>
+
+                <!-- Amount -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold text-gray-700">Amount (BDT)</span>
+                    </label>
+                    <div class="relative">
+                        <span
+                            class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-semibold text-indigo-600/80">৳</span>
+                        <input id="amount" required name="amount" type="tel" placeholder="1,000"
+                            class="input input-bordered border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 w-full pl-12 text-xl font-medium bg-white" />
+                    </div>
+                    <p id="errorAmount" class="text-red-600 text-[10px] hidden ">Enter Valid Amount</p>
+
+
+                </div>
+
+                <!-- PIN -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold text-gray-700"> PIN</span>
+                    </label>
+                    <input required id="pin" name="pin" type="password" maxlength="4" placeholder="••••"
+                        class="input input-bordered border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 w-full text-center text-2xl tracking-[0.5em] font-medium bg-white" />
+                </div>
+                <p id="errorPin" class="text-red-600 text-[10px] hidden ">Enter Valid Pin</p>
+
+                <!-- Submit button -->
+                <div class="pt-2">
+                    <button
+                        class="btn btn-md bg-indigo-600 hover:bg-indigo-700 text-white border-none w-full  text-sm font-semibold  rounded-xl">
+                        Add Money Securely
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 " fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <script type="module" src="addMoney.js"></script>
+</body>
+
+</html>
