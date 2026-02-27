@@ -1,11 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Assignment-4</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-    
+    <nav class="w-10/12 mx-auto mt-10 ">
+
+        <h1 class="text-center py-5 lg:text-xl ">Job Application Tracker</h1>
+
+        <div class="flex gap-5 justify-center ">
+            <div class="w-40 pt-1 rounded-lg text-center h-15 bg-gray-800">
+                <p class="text-sm">Total</p>
+                <h1 id="allcount1" class="text-xl">8</h1>
+            </div>
+            <div class="w-40 pt-1 rounded-lg text-center h-15 bg-gray-800">
+                <p class="text-sm">Interview</p>
+                <h1 id="allcount2" class="text-xl">0</h1>
+            </div>
+            <div class="w-40 pt-1 rounded-lg text-center h-15 bg-gray-800">
+                <p class="text-sm">Rejected</p>
+                <h1 id="allcount3" class="text-xl">0</h1>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="lg:w-8/12 w-full mx-auto  border border-gray-600 rounded-lg p-2 my-5 ">
+
+        <div class="flex py-3 justify-between px-1">
+            <p>Available Jobs</p>
+            <p> <span id="allcount">8</span> Jobs</p>
+        </div>
+        <hr class='py-1 text-gray-600'>
+
+        <div class="flex gap-3">
+            <button id="all" class="btn btn-secondary lg:btn-md btn-sm  ">All </button>
+            <button id="interview" class="btn btn-secondary lg:btn-md btn-sm ">Interview</button>
+            <button id="rejected" class="btn btn-secondary lg:btn-md btn-sm ">Rejected</button>
+        </div>
+
+        <!-- All Section  -->
+        <div id="allPage" class="">
+            <div class="card bg-gray-800 my-3 text-neutral-content w-full">
+                <div class="card-body">
+                    <h2 class="card-title text-blue-300">TechFlow Solutions (Senior Frontend Engineer)</h2>
+                    <p class="leading-1.5 text-gray-400">Remote (San Francisco, CA)</p>
+                    <p class="text-gray-400">Full Time - $140,000 - $170,000</p>
+                    <p class="text-gray-400 py-2">Responsible for building scalable web applications using React.js and
+                        TypeScript. You will lead a team of 4 developers and optimize performance.</p>
+                    <div class="card-actions">
+                        <button class="btn btn-outline btn-success lg:btn-md btn-sm">Interview</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">Rejected</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-gray-800 my-3 text-neutral-content w-full">
+                <div class="card-body">
+                    <h2 class="card-title text-blue-300">Creative Edge Agency (Visual Designer)</h2>
+                    <p class="leading-1.5 text-gray-400">Brooklyn, NY</p>
+                    <p class="text-gray-400">Contract - $45 - $60 / hour</p>
+                    <p class="text-gray-400 py-2">Focusing on brand identity and social media assets for lifestyle
+                        brands. Proficiency in Adobe Creative Suite is a must for this role.</p>
+                    <div class="card-actions">
+                        <button class="btn btn-outline btn-success lg:btn-md btn-sm">Interview</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">Rejected</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-gray-800 my-3 text-neutral-content w-full">
+                <div class="card-body">
+                    <h2 class="card-title text-blue-300">Insight Metrics (Junior Data Analyst)</h2>
+                    <p class="leading-1.5 text-gray-400">Austin, TX (Hybrid)</p>
+                    <p class="text-gray-400">Full Time - $75,000 - $90,000</p>
+                    <p class="text-gray-400 py-2">Extracting and cleaning data from SQL databases to create dashboards.
+                        Working closely with marketing to track digital campaign ROI.</p>
+                    <div class="card-actions">
+                        <button class="btn btn-outline btn-success lg:btn-md btn-sm">Interview</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">Rejected</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-gray-800 my-3 text-neutral-content w-full">
+                <div class="card-body">
+                    <h2 class="card-title text-blue-300">CloudScale SaaS (Customer Success Manager)</h2>
+                    <p class="leading-1.5 text-gray-400">Chicago, IL</p>
+                    <p class="text-gray-400">Full Time - $65,000 - $80,000</p>
+                    <p class="text-gray-400 py-2">Manage enterprise clients, ensuring high retention rates and
+                        successful onboarding. Requires excellent communication and Zendesk experience.</p>
+                    <div class="card-actions">
+                        <button class="btn btn-outline btn-success lg:btn-md btn-sm">Interview</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">Rejected</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-gray-800 my-3 text-neutral-content w-full">
+                <div class="card-body">
+                    <h2 class="card-title text-blue-300">Silverline Banking (Python Developer)</h2>
+                    <p class="leading-1.5 text-gray-400">London, UK</p>
+                    <p class="text-gray-400">Full Time - £70,000 - £85,000</p>
+                    <p class="text-gray-400 py-2">Developing secure API endpoints using Django and PostgreSQL.
+                        Experience with microservices and AWS Lambda is highly preferred.</p>
+                    <div class="card-actions">
+                        <button class="btn btn-outline btn-success lg:btn-md btn-sm">Interview</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">Rejected</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-gray-800 my-3 text-neutral-content w-full">
+                <div class="card-body">
+                    <h2 class="card-title text-blue-300">Global Media Group (Senior Content Writer)</h2>
+                    <p class="leading-1.5 text-gray-400">Toronto, Canada (Remote)</p>
+                    <p class="text-gray-400">Part Time - $40,000 - $50,000</p>
+                    <p class="text-gray-400 py-2">Creating SEO-optimized blog posts and whitepapers for a B2B audience.
+                        Responsible for the editorial calendar and coordinating freelancers.</p>
+                    <div class="card-actions">
+                        <button class="btn btn-outline btn-success lg:btn-md btn-sm">Interview</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">Rejected</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-gray-800 my-3 text-neutral-content w-full">
+                <div class="card-body">
+                    <h2 class="card-title text-blue-300">Nexus Security (SOC Analyst)</h2>
+                    <p class="leading-1.5 text-gray-400">Washington, D.C.</p>
+                    <p class="text-gray-400">Full Time - $110,000 - $135,000</p>
+                    <p class="text-gray-400 py-2">Monitoring network traffic for security breaches and responding to
+                        incidents. Requires CompTIA Security+ or CISSP certification.</p>
+                    <div class="card-actions">
+                        <button class="btn btn-outline btn-success lg:btn-md btn-sm">Interview</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">Rejected</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-gray-800 my-3 text-neutral-content w-full">
+                <div class="card-body">
+                    <h2 class="card-title text-blue-300">Pixel Perfect Apps (Product Designer)</h2>
+                    <p class="leading-1.5 text-gray-400">Berlin, Germany</p>
+                    <p class="text-gray-400">Full Time - €55,000 - €70,000</p>
+                    <p class="text-gray-400 py-2">Designing intuitive user interfaces for mobile health applications.
+                        Conducting user research and building high-fidelity Figma prototypes.</p>
+                    <div class="card-actions">
+                        <button class="btn btn-outline btn-success lg:btn-md btn-sm">Interview</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">Rejected</button>
+                        <button class="btn btn-outline btn-error lg:btn-md btn-sm">remove</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- Interview div -->
+        <div id="interviewPage" class="hidden">
+            <section id="nofound2" class="card w-full max-w-sm bg-base-100 shadow-xl my-10 mx-auto overflow-hidden">
+                <figure class="px-4 pt-4">
+                    <img src="jobs.png" alt="Jobs" class="rounded-xl w-25 h-30 " />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title text-blue-300">No jobs available</h2>
+                    <h2 class=" text-gray-300">Check back soon for new job opportunities</h2>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- Rejected div -->
+        <div id="rejectedPage" class="hidden">
+            <section id="nofound1"
+                class="hidden card w-full max-w-sm bg-base-100 shadow-xl my-10 mx-auto overflow-hidden">
+                <figure class="px-4 pt-4">
+                    <img src="jobs.png" alt="Jobs" class="rounded-xl w-25 h-30 " />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title text-blue-300">No jobs available</h2>
+                    <h2 class=" text-gray-300">Check back soon for new job opportunities</h2>
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
 </body>
+
 </html>
