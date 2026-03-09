@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issue Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="h-screen bg-base-950  ">
+
+    <!-- Home page  -->
+    <section id="home-page" class=" flex items-center justify-center">
+        <section class="  card bg-base-700 lg:w-md p-10  w-full shadow-2xl shadow-black/40 section">
+            <div class=" card-body items-center text-center px-6 py-10 sm:py-12">
+
+                <!-- Logo & Title -->
+                <div class="flex flex-col items-center gap-3 mb-6">
+                    <div class="avatar">
+                        <div class="w-25 rounded-full ">
+                            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                                alt="GitHub Logo" />
+                        </div>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-white">
+                        GitHub Issue Tracker
+                    </h1>
+                    <p class="ext-gray-400 text-sm sm:text-base">
+                        Sign in to manage your issues
+                    </p>
+                </div>
+
+                <!-- Form -->
+                <div class="w-full flex flex-col gap-5">
+
+                    <!-- Username -->
+                    <div class="form-control w-full">
+
+                        <p class="text-left py-1  ">Username</p>
+
+                        <input id="username" type="text " placeholder="username"
+                            class="input  w-full  text-gray-400 " />
+
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-control w-full">
+
+                        <p class="text-left py-1 ">Password</p>
+
+                        <input id="password" type="password" placeholder="••••••••" class="input  w-full " />
+
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button id="handleForm" class="btn btn-primary w-full mt-3 text-lg">
+                        Sign In
+                    </button>
+
+                </div>
+
+
+                <div class="text-xs text-base-content/50 mt-6">
+                    For demo use username and password: admin / admin
+                </div>
+
+            </div>
+        </section>
+    </section>
+
+
+    <!-- Main Page & Card Page -->
+    <!-- Navbar -->
+    <div id="mainPage" class="hidden">
+        <div class="navbar bg-gray-700  shadow-xl">
+            <div class="flex-1 avatar gap-2 ">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                    class="w-10 h-10 rounded-full p-1 " alt="">
+                <h1 class="text-2xl ">Github Issue Tracker</h1>
+            </div>
+            <div class="flex gap-2">
+                <input id="input-new-issue" type="text" placeholder="Search"
+                    class="input input-bordered w-24 md:w-auto" />
+                <button id="new-issue" class="btn btn-secondary">New issue</button>
+            </div>
+        </div>
+        <section  class="w-10/12 mt-10 rounded-lg  mx-auto p-2 bg-gray-800 ">
+
+
+            <!-- Three Selected button -->
+            <div id="btn-click" class="  ">
+                <div id="btn" onclick="allBtn()" class="btn btn-outline m-1 ">All</div>
+                <div id="btn" onclick="openBtn()" class="btn btn-outline m-1 ">Open</div>
+                <div id="btn" onclick="closedBtn()" class="btn btn-outline m-1 ">Closed</div>
+            </div>
+
+            <div class="p-4 md:p-6 bg-base-700 rounded-xl  border border-base-600 mt-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between ">
+
+                    <!-- Left side - Logo  -->
+                    <div class="flex items-center gap-4">
+                        <div class="avatar">
+                            <div
+                                class="w-12 rounded-full bg-base-800 ring ring-primary ring-offset-2 ring-offset-base-700 flex items-center justify-center">
+                                <img src="assets/Aperture.png" alt="Project Logo" class="w-10 h-10 object-contain" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-2xl md:text-3xl font-bold text-white">
+                                <span id="length">50</span> Issues
+                            </div>
+                            <div class="text-sm ext-gray-400 mt-1">
+                                Track and manage your project issues
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right side - Open / Closed status -->
+                    <div class="flex  gap-5 md:gap-12">
+                        <div class="text-center flex align-center items-center gap-1 ">
+                            <div class="w-3 h-3 rounded-full bg-green-500 "></div>
+                            <div class="text-sm text-gray-400 ">Open</div>
+                        </div>
+
+                        <div class="flex align-center items-center gap-1 ">
+                            <div class="w-3 h-3 rounded-full bg-purple-500 "></div>
+                            <div class="text-sm text-gray-400 ">Closed</div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Show Card -->
+            <section id="card-container" class="grid gap-3 mt-10  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 ">
+            </section>
+            <!-- Loading state -->
+            <div id="loading" class="hidden col-span-3 flex items-center justify-center">
+                <span class="loading loading-spinner loading-lg text-secondary"></span>
+            </div>
+    </div>
+
+
+    <!-- Button Modal -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+
+    </dialog>
+
+
+    </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

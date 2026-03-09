@@ -16,7 +16,7 @@ let value2;
 
 // Const details
 const num = 10;
-// num=20;
+num=20;
 console.log(num);
 
 
