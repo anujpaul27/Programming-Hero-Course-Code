@@ -1,10 +1,4 @@
-
-import { Line, LineChart, XAxis, YAxis } from 'recharts';
-import { RechartsDevtools } from '@recharts/devtools';
-import { Suspense } from 'react';
-import CheckSus from './CheckSus';
-import axios from 'axios'
-const studentAr = [
+[
   {
     "id": 101,
     "name": "Arun",
@@ -106,29 +100,3 @@ const studentAr = [
     "result": "Pass"
   }
 ]
-
-// Revise Axios 
-const FetchStudentData = async () => {
-  const res = await axios.get('https://jsonplaceholder.typicode.com/todos')
-  return res.data;
-}
-
-const App = () => {
-  const data = FetchStudentData()
-  // console.log(studentAr);
-  return (
-    <div>
-      <LineChart width={'90%'} height={'300px'} responsive data={studentAr}>
-        <Line dataKey={'maths'} ></Line>
-        <XAxis dataKey={'name'}></XAxis>
-        <YAxis />
-      </LineChart>
-      {/* User Suspense  */}
-      <Suspense fallback={<p>loading..</p>}>
-        <CheckSus data={data}></CheckSus>
-      </Suspense>
-    </div>
-  );
-};
-
-export default App;
