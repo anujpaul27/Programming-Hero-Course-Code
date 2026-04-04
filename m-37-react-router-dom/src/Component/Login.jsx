@@ -1,12 +1,12 @@
-import React from 'react';
-import { useParams } from 'react-router';
+import { useLoaderData } from "react-router";
 
 const Login = () => {
-    const param = useParams()
-    console.log(param);
+    const user = useLoaderData()
+    console.log(user);
+
     return (
         <div>
-            <h1>This is a login page as well </h1>
+            <p>This is a login page as well </p>
         </div>
     );
 };

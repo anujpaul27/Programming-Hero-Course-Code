@@ -4,7 +4,8 @@ const Navbar = () => {
     return (
         <div>
             <h1>Iam Navbar </h1>
-            <Link to={'/login'}>Login </Link>
+            <NavLink to={'/login'}>Login </NavLink>
+            <NavLink to={'/registration'}>Registration</NavLink>
         </div>
     );
 };
