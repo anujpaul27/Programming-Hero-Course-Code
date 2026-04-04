@@ -1,8 +1,10 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useParams } from "react-router";
 
 const Login = () => {
     const user = useLoaderData()
     console.log(user);
+    const {pr} = useParams()
+    console.log(pr);
 
     return (
         <div>
