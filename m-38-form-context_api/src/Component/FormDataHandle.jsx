@@ -1,9 +1,7 @@
-import React from 'react';
 
 const FormDataHandle = () => {
 
-    const handleSubmit = (e) => 
-    {
+    const handleSubmit = (e) => {
         // Stop Default refresh after submit
         e.preventDefault()
 
@@ -12,8 +10,6 @@ const FormDataHandle = () => {
         const name = data.get('name')
         const password = data.get('password')
         console.log(name, password);
-        
-
     }
 
     return (
@@ -24,7 +20,6 @@ const FormDataHandle = () => {
                 <input type="password" name="password" id="" placeholder='Password' />
                 <br />
                 <input type="submit" value="submit" />
-
             </form>
         </div>
     );

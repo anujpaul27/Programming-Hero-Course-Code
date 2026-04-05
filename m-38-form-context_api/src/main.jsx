@@ -7,6 +7,7 @@ import { RouterProvider } from "react-router/dom";
 import Main from './Component/EventTarget.jsx';
 import Navbar from './Component/Navbar.jsx';
 import FormDataHandle from './Component/FormDataHandle.jsx';
+import InstantControlForm from './Component/InstantControlForm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/instantcontrolform',
+    element: <InstantControlForm/>
+  }
 
 ])
 
