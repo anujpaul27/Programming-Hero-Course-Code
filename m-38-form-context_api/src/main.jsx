@@ -6,11 +6,12 @@ import { BrowserRouter, createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import Main from './Component/EventTarget.jsx';
 import Navbar from './Component/Navbar.jsx';
+import FormDataHandle from './Component/FormDataHandle.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Main />,
+    element: <FormDataHandle />,
     children: [
       {
         path: '/navbar',
