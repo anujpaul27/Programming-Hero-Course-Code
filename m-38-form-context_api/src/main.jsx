@@ -8,6 +8,8 @@ import Main from './Component/EventTarget.jsx';
 import Navbar from './Component/Navbar.jsx';
 import FormDataHandle from './Component/FormDataHandle.jsx';
 import InstantControlForm from './Component/InstantControlForm.jsx';
+import Gsap from './Gsap/Animation.jsx';
+import Context from './Context/Context.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,13 +24,19 @@ const router = createBrowserRouter([
   },
   {
     path: '/instantcontrolform',
-    element: <InstantControlForm/>
+    element: <InstantControlForm />
+  },
+  {
+    path: '/gsap',
+    element: <Gsap />
   }
 
 ])
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}>
-    <App />
-  </RouterProvider>
+  <Context>
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
+  </Context>
 )

@@ -1,9 +1,12 @@
+import InstantType from "../Custom Hook/InstantType";
 
 
 const InstantControlForm = () => {
+    const [password, onChnagePassword] = InstantType(' ')
 
     const handleName = (e) => {
         console.log(e);
+        console.log(password);
     }
 
     return (
@@ -11,7 +14,7 @@ const InstantControlForm = () => {
             <form >
                 <input className="RedBorder" onKeyUp={(e) => handleName(e.target.value)} type="text" placeholder='Enter Name' name='name' />
                 <br />
-                <input type="text" name='password' placeholder='Enter Password' />
+                <input type="text" name='password' onChange={onChnagePassword} placeholder='Enter Password' />
                 <br />
                 <input type="submit" value="submit" />
             </form>

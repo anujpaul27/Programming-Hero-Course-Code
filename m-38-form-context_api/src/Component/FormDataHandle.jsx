@@ -1,5 +1,10 @@
+import { useContext } from "react";
+import { FormContext } from "../Context/Context";
 
 const FormDataHandle = () => {
+
+    const {val} = useContext(FormContext)
+    console.log(val);
 
     const handleSubmit = (e) => {
         // Stop Default refresh after submit
