@@ -1,12 +1,13 @@
-import { Link, NavLink } from 'react-router';
-
+import React from 'react';
+import { Outlet } from "react-router";
+import Footer from './Footer';
 const Navbar = () => {
     return (
         <div>
-            <h1>Iam Navbar </h1>
-            <NavLink to={'/login'}>Login </NavLink>
-            <NavLink to={'/registration'}>Registration</NavLink>
-            <NavLink to={'/users'}>Users</NavLink>
+            <h1>Navbar </h1>
+            <Outlet/>
+            <Footer/>
+            
         </div>
     );
 };

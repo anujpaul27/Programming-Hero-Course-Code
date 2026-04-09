@@ -1,46 +1,28 @@
-import { StrictMode, Suspense } from 'react'
-import { createRoot } from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
 import './index.css'
-import App from './App.jsx'
-import { BrowserRouter, createBrowserRouter, Route, Router, RouterProvider, Routes } from "react-router";
-import Check from './Component/Check.jsx';
-import Login from './Component/Login.jsx';
-import Registration from './Component/Registration.jsx';
-import User from './Component/User.jsx';
-import UserDetails from './Component/UserDetails.jsx';
-
+import Navbar from "./Component/Navbar";
+import Hero from "./Component/Hero";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Check />,
+    path: "/",
+    element: <Navbar />,
     children: [
       {
-        path: '/login/:pr',
-        element: <Login />,
-        loader: () => { return fetch('https://jsonplaceholder.typicode.com/users') },
-      },
-      {
-        path: 'registration',
-        element: <Registration />
-      },
-      {
-        path: '/users',
-        element: <User/>,
-        loader: ()=> fetch('https://jsonplaceholder.typicode.com/users')
-      },
-      {
-        path: '/users/user/:id',
-        element: <UserDetails/>,
-        loader: ({params})=> fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`)
+        path: '/hero',
+        element: <Hero />
       }
     ]
-  }
-])
+  },
 
+]);
 
-createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}>
-    <App></App>
-  </RouterProvider>
-)
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root).render(
+  <RouterProvider router={router} />
+);
+

@@ -11,17 +11,7 @@ function App() {
 
   return (
     <div>
-      <Routes>
-        <Route path='/' element={<Check />}>
-          <Route
-            path='/login'
-            element={<Login />}
-            
-          />
-
-          <Route path='/registration' element={<Registration />} />
-        </Route>
-      </Routes>
+      <h1>This is a app component</h1>
     </div>
   )
 }
