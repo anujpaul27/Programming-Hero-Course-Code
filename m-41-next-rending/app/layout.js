@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
           <Link href={"/"}>Home</Link>
           <Link href={"/about"}>About </Link>
           <Link href={"/contract"}>Contract </Link>
+          <Link href={"/product"}>Product </Link>
         </div>
         {children}
       </body>
