@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
                 </svg>
               </div>
             </div>
-            <a className="btn btn-ghost text-xl">Navbar</a>
+            <a className="btn btn-ghost text-xl ">Navbar</a>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1 flex gap-10 ">
