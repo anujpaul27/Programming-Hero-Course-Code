@@ -2,11 +2,13 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
-};
-
-module.exports = {
   images: {
-    domains: ["example.com"],
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "cdn.dummyjson.com",
+      port: "",
+      pathname: "**",
+    },]
   },
 };
 

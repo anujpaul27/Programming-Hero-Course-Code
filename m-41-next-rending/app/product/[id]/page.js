@@ -7,12 +7,16 @@ const ProductDetailsPage = async ({ params }) => {
   // featch the specific data from the api
   const res = await fetch(`https://dummyjson.com/products/${id}`);
   const data = await res.json();
-  console.log(data);
+//   console.log(data);
   return (
     <div>
       <h1 className="text-2xl ">{data.title}</h1>
       <p>{data.description}</p>
-      <img src={`${data.thumbnail}`} alt="image"/>
+      <Image 
+      src={data.thumbnail}
+      width={300}
+      height={300}
+       alt="image"></Image>
     </div>
   );
 };
