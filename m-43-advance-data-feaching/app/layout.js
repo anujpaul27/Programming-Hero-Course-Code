@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { Button } from "@heroui/react";
+import Navbar from "./Component/Navbar";
 
 
 const geistSans = Geist({
@@ -21,22 +22,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const links = <>
-    <li> <Link href={'/'}>Home</Link> </li>
-    <li> <Link href={'/users'}>Users</Link> </li>
-    <li> <Link href={'/about'}>About</Link> </li>
-    <li> <Link href={'/posts'}>Posts</Link> </li>
 
-  </>
   return (
     <html
       lang="en"
-      className= {`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {/* Navbar  */}
-          
-          {children}
+        <Navbar />
+        {children}
       </body>
     </html>
   );
