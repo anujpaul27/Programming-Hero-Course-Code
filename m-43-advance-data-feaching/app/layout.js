@@ -1,5 +1,5 @@
 
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_Samaritan } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { Button } from "@heroui/react";
@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+const sansSorif = Noto_Sans_Samaritan ({
+  variable: "sansSorif",
+  subsets: ['samaritan'],
+  weight: ['400']
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -28,7 +33,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body  className={`${sansSorif.className} min-h-full flex flex-col`}>
         <Navbar />
         {children}
       </body>
