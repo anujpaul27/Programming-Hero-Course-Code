@@ -31,7 +31,7 @@ export default function Navbar() {
         {/* Phone */}
         <div className="flex items-center gap-4">
           <a 
-            href="tel:8085550111" 
+            href="tel:01646267167" 
             className="hidden sm:flex items-center gap-2 text-[#2F4F4F] hover:text-[#D97757] transition-colors font-medium"
           >
             <span className="text-xl">☎</span>
