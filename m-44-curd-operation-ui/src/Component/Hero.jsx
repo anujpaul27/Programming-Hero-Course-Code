@@ -24,10 +24,10 @@ export default function Hero() {
         </h1>
 
         {/* CTA Button */}
-        <div className="flex justify-center mt-10 mb-16">
+        <div className="flex justify-center mt-5 mb-10">
           <Button
             size="lg"
-            className="bg-[#2F4F4F] hover:bg-[#1F3A3A] text-white font-medium text-lg px-10 py-7 rounded-full shadow-lg transition-all duration-300 hover:scale-105"
+            className="bg-[#2F4F4F] hover:bg-[#1F3A3A] text-white font-medium text-lg px-8 py-6 rounded-full shadow-lg transition-all duration-300 hover:scale-105"
             endContent={<span className="text-xl">→</span>}
           >
             View Menu

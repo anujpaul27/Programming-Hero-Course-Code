@@ -1,25 +1,25 @@
 // app/components/MealTimesSection.tsx
 import React from 'react';
 import Image from 'next/image';
-import { Button } from '@nextui-org/button';
+import { Button } from '@heroui/react';
 
 const meals = [
   {
     title: "Breakfast Cravings",
     time: "Light meal • Fruit drink • From 7am",
-    image: "/breakfast.jpg",
+    image: "/food4.jpg",
     emoji: "🥐"
   },
   {
     title: "Lunch Blast",
     time: "Spicy meal • Beverage • From 1pm",
-    image: "/noodles.jpg",
+    image: "/food2.jpg",
     emoji: "🍜"
   },
   {
     title: "Dinner Madness",
     time: "Light meal • Beverage • From 9pm",
-    image: "/steak-dinner.jpg",
+    image: "/food3.jpg",
     emoji: "🥩"
   },
 ];

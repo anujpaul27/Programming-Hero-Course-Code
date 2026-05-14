@@ -10,7 +10,7 @@ export default function HealthierSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            <h2 className="font-serif text-5xl leading-tight">
+            <h2 className="font-serif text-4xl leading-tight">
               A healthier way now has
               <br />a seat at the table.
             </h2>
@@ -59,7 +59,7 @@ export default function HealthierSection() {
                 className="rounded-2xl shadow-lg w-full object-cover"
               />
               <Image
-                src="/restaurant-scene.jpg"
+                src="/waiter.jpg"
                 alt="Woman at restaurant"
                 width={300}
                 height={300}
@@ -68,14 +68,14 @@ export default function HealthierSection() {
             </div>
             <div className="pt-12 space-y-4">
               <Image
-                src="/steak.jpg"
+                src="/food2.jpg"
                 alt="Grilled steak"
                 width={300}
                 height={200}
                 className="rounded-2xl shadow-lg w-full object-cover"
               />
               <Image
-                src="/salad.jpg"
+                src="/food3.jpg"
                 alt="Fresh salad"
                 width={300}
                 height={200}

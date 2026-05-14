@@ -1,5 +1,6 @@
 import HealthierSection from "@/Component/HealthierSection";
 import Hero from "@/Component/Hero";
+import MealTimesSection from "@/Component/MealTimesSection";
 import Navbar from "@/Component/Navbar";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <HealthierSection/>
+      <MealTimesSection/>
     </main>
   );
 }
