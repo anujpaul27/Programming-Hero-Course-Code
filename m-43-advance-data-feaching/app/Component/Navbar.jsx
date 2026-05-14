@@ -1,15 +1,16 @@
 'use client'
 import Link from 'next/link';
 import React from 'react';
+import NavLink from './NavLink';
 
 const Navbar = () => {
     const links = <>
-        <p> <Link href={'/'}>Home</Link> </p>
-        <p> <Link href={'/users'}>Users</Link> </p>
-        <p> <Link href={'/about'}>About</Link> </p>
-        <p> <Link href={'/posts'}>Posts</Link> </p>
-        <p> <Link href={'/auth/signup'}>SignUp</Link> </p>
-        <p> <Link href={'/auth/signin'}>SignIn</Link> </p>
+        <p> <NavLink href={'/'}>Home</NavLink> </p>
+        <p> <NavLink href={'/users'}>Users</NavLink> </p>
+        <p> <NavLink href={'/about'}>About</NavLink> </p>
+        <p> <NavLink href={'/posts'}>Posts</NavLink> </p>
+        <p> <NavLink href={'/auth/signup'}>SignUp</NavLink> </p>
+        <p> <NavLink href={'/auth/signin'}>SignIn</NavLink> </p>
     </>
     return (
         <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
