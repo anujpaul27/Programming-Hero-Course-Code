@@ -46,8 +46,21 @@ async function run() {
         }
     })
 
-    
-
+    app.get('/get', async (req,res)=> {
+        try {
+            const result = await userCollection.find({}).toArray()
+            res.status(200).json({
+                message: 'user data fetch successful.',
+                data: result
+            })
+        }catch(err)
+        {
+            res.status(400).json({
+                message: err.message
+            })
+        }
+    })
+ 
   } catch (err) {
     console.log(err.message);
   }
