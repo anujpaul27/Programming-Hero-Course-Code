@@ -27,6 +27,27 @@ async function run() {
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!",
     );
+
+    const database = await client.db('CollegeDB')
+    const userCollection = database.collection('ph-user')
+
+    app.post('/post', async (req,res)=> {
+        try {
+            const result = await userCollection.insertOne(req.body)
+            res.status(201).json({
+                message: 'User info save successful.',
+                data: result,
+            })
+        } catch (err)
+        {
+            res.status(500).json({
+                message: err.message
+            })
+        }
+    })
+
+    
+
   } catch (err) {
     console.log(err.message);
   }
