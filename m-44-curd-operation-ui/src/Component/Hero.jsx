@@ -1,7 +1,7 @@
 // app/components/Hero.tsx
-import React from 'react';
-import Image from 'next/image';
-import { Button } from '@heroui/react';
+import React from "react";
+import Image from "next/image";
+import { Button } from "@heroui/react";
 
 export default function Hero() {
   return (
@@ -12,14 +12,16 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2 bg-white rounded-full px-6 py-2 shadow-sm border border-[#2F4F4F]/10">
             <div className="flex text-amber-500">⭐⭐⭐⭐⭐</div>
             <span className="text-sm font-medium text-[#2F4F4F]">
-              Loved by 2.6k users with <span className="font-semibold">4.9 rating</span>
+              Loved by 2.6k users with{" "}
+              <span className="font-semibold">4.9 rating</span>
             </span>
           </div>
         </div>
 
         {/* Main Heading */}
         <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl  text-center leading-[1.05] text-[#2F4F4F] max-w-4xl mx-auto">
-          Welcome to Food Heaven<br />
+          Welcome to Food Heaven
+          <br />
           Where <span className="text-[#D97757]">Flavor Meets Excellence!</span>
         </h1>
 
@@ -34,20 +36,7 @@ export default function Hero() {
           </Button>
         </div>
 
-        {/* Hero Image */}
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-5xl">
-          <Image
-            src="/hero-food.jpg" 
-            alt="Spring rolls with dipping sauce and fresh ingredients"
-            width={1200}
-            height={600}
-            className="w-full h-auto object-cover"
-            priority
-          />
-          
-          {/* Optional decorative overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-        </div>
+        
       </div>
     </section>
   );
