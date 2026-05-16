@@ -1,9 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="mx-auto my-auto">
-      Home page
+      <p className="text-3xl">Home page</p>
+      <div className="flex gap-5 my-7 ">
+        <Link href={'/register'}>Register</Link>
+        <Link href={'/login'}>Login</Link>
+      </div>
     </div>
   );
 }
