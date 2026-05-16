@@ -26,7 +26,7 @@ const meals = [
 
 export default function MealTimesSection() {
   return (
-    <section className="py-20 bg-[#F8F5F0]">
+    <section className="py-20 bg-[#F8F5F0] ">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 text-4xl mb-4">🍽️</div>
@@ -46,6 +46,7 @@ export default function MealTimesSection() {
                   src={meal.image}
                   alt={meal.title}
                   fill
+                  loading='lazy'
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>

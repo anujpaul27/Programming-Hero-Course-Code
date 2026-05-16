@@ -47,6 +47,7 @@ export default function HowItWorksSection() {
                   src={step.image}
                   alt={step.title}
                   fill
+                  loading='lazy'
                   className="object-cover rounded-3xl shadow-xl relative z-10 border-8 border-white"
                 />
               </div>

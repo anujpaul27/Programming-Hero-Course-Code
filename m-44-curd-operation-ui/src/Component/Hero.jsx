@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@heroui/react";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -32,7 +33,7 @@ export default function Hero() {
             className="bg-[#2F4F4F] hover:bg-[#1F3A3A] text-white font-medium text-lg px-8 py-6 rounded-full shadow-lg transition-all duration-300 hover:scale-105"
             endContent={<span className="text-xl">→</span>}
           >
-            View Menu
+            <Link href={'/menu'}>View Menu</Link>
           </Button>
         </div>
 

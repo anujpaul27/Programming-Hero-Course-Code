@@ -5,7 +5,7 @@ import { Button } from "@heroui/react";
 
 export default function HealthierSection() {
   return (
-    <section className="bg-[#F4A261] py-16 text-[#2F4F4F]">
+    <section className="bg-[#F4A261] py-16 text-[#2F4F4F] lg:px-20 ">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}

@@ -4,9 +4,16 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@heroui/react';
+import { authClient } from '@/app/lib/auth-client';
 // import { Button } from '@nextui-org/button';
 
 export default function Navbar() {
+  const { 
+        data: session, 
+        isPending, //loading state
+        error, //error object
+        refetch //refetch the session
+    } = authClient.useSession()
   return (
     <nav className="bg-[#F8F5F0] border-b border-[#2F4F4F]/10 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
@@ -26,6 +33,9 @@ export default function Navbar() {
           <Link href="/menu" className="hover:text-[#D97757] transition-colors">Menu</Link>
           <Link href="/about" className="hover:text-[#D97757] transition-colors">About</Link>
           <Link href="/contact" className="hover:text-[#D97757] transition-colors">Contact</Link>
+          {session && (
+            <Link href="/logout" className="hover:text-[#D97757] transition-colors">Log Out</Link>
+          )}
         </div>
 
         {/* Phone */}
