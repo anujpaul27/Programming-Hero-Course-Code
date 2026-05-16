@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
 require('dotenv').config()
+const cors = require('cors')
 
 
 //Middleware 
-app.use(express())
+app.use(express.json())
+app.use(cors())
 
 
 
@@ -28,6 +30,23 @@ async function run() {
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
+    const db = await client.db('CollegeDB')
+    const userModel = db.collection('ph-user')
+
+    // CREATE: Insert a new document
+    app.post('/post', async (req,res)=> {
+
+        const result = await userModel.insertOne(req.body)
+        res.status(201).json({
+            message: 'Post request successful',
+            data: result
+        })
+    })
+
+    app.get('/', (req,res)=> 
+    {
+      res.send('Server is running')
+    })
 
   } finally {
     // Ensures that the client will close when you finish/error
