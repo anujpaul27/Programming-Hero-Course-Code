@@ -9,6 +9,7 @@ export default function Home() {
         <Link href={'/register'}>Register</Link>
         <Link href={'/login'}>Login</Link>
         <Link href={'/profile'}>Create User</Link>
+        <Link href={'/alluser'}>All User</Link>
       </div>
     </div>
   );
