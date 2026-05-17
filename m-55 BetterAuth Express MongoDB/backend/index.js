@@ -2,12 +2,41 @@ const express = require('express')
 const app = express()
 require('dotenv').config()
 const cors = require('cors')
-
+const {createRemoteJWKSet, jwtVerify}  = require('jose-cjs')
 
 //Middleware 
 app.use(express.json())
 app.use(cors())
 
+const JWTK = createRemoteJWKSet(
+  new URL('http://localhost:3000/api/auth/jwks')
+)
+
+// User Token verify middleware
+const userTokenVerify = async (req,res,next)=>
+{
+  const token = req.headers.token;
+
+  if (!token)
+  {
+    return res.status(401).json({
+      message: 'Invalid User'
+    })
+  }
+
+  try{
+    const {payload} = await jwtVerify(token,JWTK)
+    if (payload)
+    {
+      next()
+    }
+  }catch (err)
+  {
+    res.status(401).json({
+      message: 'invalid User'
+    })
+  }
+}
 
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -35,12 +64,21 @@ async function run() {
 
     // CREATE: Insert a new document
     app.post('/post', async (req,res)=> {
-
         const result = await userModel.insertOne(req.body)
         res.status(201).json({
             message: 'Post request successful',
             data: result
         })
+    })
+
+    // READ: get the form the DB
+    app.get('/alluser',userTokenVerify, async (req,res)=> {
+      console.log(req.headers.token)
+      const allUser = await userModel.find({}).toArray()
+      res.status(201).json({
+        message: 'user fetch successful.',
+        data: allUser,
+      })
     })
 
     app.get('/', (req,res)=> 
