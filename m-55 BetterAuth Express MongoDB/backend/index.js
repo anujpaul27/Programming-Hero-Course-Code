@@ -39,7 +39,7 @@ const userTokenVerify = async (req,res,next)=>
 }
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = process.env.MONGODB_URI;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -89,6 +89,25 @@ async function run() {
         res.status(201).json({
           message: 'user fetch successful.',
           data: allUser,
+        })
+      }
+      catch(err)
+      {
+        res.status(403).json({
+          message: err.message
+        })
+      }
+    })
+
+    // UPDATED data 
+    app.put('/updated/:id', async (req,res)=> {
+      const query = new ObjectId(req.params.id)
+      try 
+      {
+        const response = await userModel.findOneAndUpdate(query, {$set: req.body})
+        res.status(200).json({
+          message: 'Update successful.',
+          data: response
         })
       }
       catch(err)
