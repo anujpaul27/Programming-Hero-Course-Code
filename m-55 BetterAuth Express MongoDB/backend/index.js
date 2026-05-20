@@ -64,21 +64,39 @@ async function run() {
 
     // CREATE: Insert a new document
     app.post('/post', async (req,res)=> {
-        const result = await userModel.insertOne(req.body)
-        res.status(201).json({
-            message: 'Post request successful',
-            data: result
-        })
+        try 
+        {
+          const result = await userModel.insertOne(req.body)
+          res.status(201).json({
+              message: 'Post request successful',
+              data: result
+          })
+        }
+        catch (err)
+        {
+          res.status(403).json({
+            message: err.message
+          })
+        }
     })
 
     // READ: get the form the DB
     app.get('/alluser',userTokenVerify, async (req,res)=> {
-      console.log(req.headers.token)
-      const allUser = await userModel.find({}).toArray()
-      res.status(201).json({
-        message: 'user fetch successful.',
-        data: allUser,
-      })
+      
+      try 
+      {
+        const allUser = await userModel.find({}).toArray()
+        res.status(201).json({
+          message: 'user fetch successful.',
+          data: allUser,
+        })
+      }
+      catch(err)
+      {
+        res.status(403).json({
+          message: err.message
+        })
+      }
     })
 
     app.get('/', (req,res)=> 
