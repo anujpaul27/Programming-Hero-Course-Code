@@ -118,6 +118,28 @@ async function run() {
       }
     })
 
+    // Delete data with id 
+    app.delete('/delete/:id ', async (req,res)=> {
+      const query = new ObjectId(req.params.id)
+      try
+      {
+        const response = await userModel.deleteOne(query)
+
+        if (response.ok)
+        {
+          res.status(200).json({
+            message: 'Delete Successful'
+          })
+        }
+      }
+      catch (err)
+      {
+        res.status(403).json({
+          message: err.message
+        })
+      }
+    })
+
     app.get('/', (req,res)=> 
     {
       res.send('Server is running')
