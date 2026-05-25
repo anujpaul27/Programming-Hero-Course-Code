@@ -1,7 +1,10 @@
 'use client'
 
-import Users from "@/Component/Users";
+import dynamic from "next/dynamic";
 import { useState } from "react";
+
+const Users = dynamic(()=> import ('@/Component/Users'))
+// import Users from "@/Component/Users";
 
 const DashboardPage = () => {
     const [user, setUser] = useState(false)
