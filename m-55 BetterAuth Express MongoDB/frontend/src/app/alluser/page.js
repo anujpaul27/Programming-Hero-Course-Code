@@ -1,30 +1,21 @@
-import { headers } from "next/headers";
-import { auth } from "../lib/auth";
+'use client'
+
+import Users from "@/Component/Users";
+import { useState } from "react";
+
+const DashboardPage = () => {
+    const [user, setUser] = useState(false)
 
 
-const allUserPage = async () => {
-
-    const  {token} = await auth.api.getToken({
-        headers: await headers()
-    }) 
-
-    try {
-        const user = await  fetch('http://localhost:5000/alluser', {
-        headers: {
-            'token': token 
-        }
-    })
-    const data = await user.json()
-    } catch (error)
-    {
-        console.log(error.message);
-    }
-    
     return (
-        <div>
-            this is my page as well code 
+        <div className="p-20">
+            This is the all user page 
+            <h1 onClick={()=> setUser(true)} >Show User</h1>
+            {
+                user && <Users/>
+            }
         </div>
     );
 };
 
-export default allUserPage;
+export default DashboardPage;
