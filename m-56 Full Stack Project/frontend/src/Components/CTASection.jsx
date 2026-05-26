@@ -13,7 +13,7 @@ export default function CTASection() {
     <section className="py-24 px-6 relative">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-r from-violet-800/25 via-purple-700/20 to-blue-800/20 rounded-full blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-100 bg-linear-to-r from-violet-800/25 via-purple-700/20 to-blue-800/20 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -44,7 +44,7 @@ export default function CTASection() {
           </h2>
 
           <p className="text-slate-400 text-lg max-w-xl mx-auto mb-8 leading-relaxed">
-            Join over 50,000 professionals who've found their dream roles
+            Join over 50,000 professionals who ve found their dream roles
             through HireLoop. It only takes 2 minutes to get started.
           </p>
 

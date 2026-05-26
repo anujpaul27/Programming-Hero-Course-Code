@@ -19,9 +19,9 @@ export default function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className=" w-10/12 mx-auto mt-3 rounded-full  top-0 left-0 right-0 z-50 border border-gray-600"
+      className=" lg:w-10/12 md:w-10/11 w-full  mx-auto mt-3 rounded-full  top-0 left-0 right-0 z-50 border border-gray-600"
     >
-      <div className="mx-auto max-w-7xl px-6 py-2">
+      <div className="mx-auto max-w-7xl px-6 ">
         <div className="card-glass rounded-2xl px-6 py-3 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
