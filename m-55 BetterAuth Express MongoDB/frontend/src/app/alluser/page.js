@@ -1,24 +1,23 @@
-'use client'
+"use client";
 
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
-const Users = dynamic(()=> import ('@/Component/Users'))
+const Users = dynamic(() => import("@/Component/Users"), {
+  loading: () => <p>Loading...</p>,
+});
 // import Users from "@/Component/Users";
 
 const DashboardPage = () => {
-    const [user, setUser] = useState(false)
+  const [user, setUser] = useState(false);
 
-
-    return (
-        <div className="p-20">
-            This is the all user page 
-            <h1 onClick={()=> setUser(true)} >Show User</h1>
-            {
-                user && <Users/>
-            }
-        </div>
-    );
+  return (
+    <div className="p-20">
+      This is the all user page
+      <h1 onClick={() => setUser(true)}>Show User</h1>
+      {user && <Users />}
+    </div>
+  );
 };
 
 export default DashboardPage;
