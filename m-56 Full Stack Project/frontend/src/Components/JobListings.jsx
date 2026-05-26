@@ -196,7 +196,7 @@ export default function JobListingsSection() {
 
   return (
     <section id="jobs" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <motion.div
           ref={ref}

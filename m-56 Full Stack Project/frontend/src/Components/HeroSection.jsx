@@ -230,7 +230,7 @@ function GlobeIllustration() {
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-16 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-28 pb-10 overflow-hidden">
       {/* Background radial glow */}
       <div className="absolute inset-0 bg-radial-glow pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-96 bg-radial-bottom pointer-events-none" />
@@ -255,7 +255,7 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: text content */}
           <div className="flex flex-col gap-6">

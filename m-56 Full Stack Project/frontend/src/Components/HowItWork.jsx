@@ -102,7 +102,7 @@ export default function FeaturesSection() {
       {/* Background */}
       <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <motion.div
           ref={ref}

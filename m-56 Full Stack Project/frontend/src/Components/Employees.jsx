@@ -61,7 +61,7 @@ export default function ForCompaniesSection() {
       {/* Glow */}
       <div className="absolute right-0 top-1/3 w-80 h-80 bg-blue-700/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <motion.div
           ref={ref}
