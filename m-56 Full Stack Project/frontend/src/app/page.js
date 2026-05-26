@@ -1,8 +1,7 @@
-import Navbar from "@/Components/Navbar";
-import Image from "next/image";
+import HeroSection from "@/Components/HeroSection";
 
 export default function Home() {
   return (
-    <Navbar/>
+    <HeroSection/>
   );
 }
