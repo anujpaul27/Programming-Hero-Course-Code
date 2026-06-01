@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@heroui/react";
 import { Zap, Menu, X } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Find Jobs", href: "#jobs" },
@@ -57,7 +58,7 @@ export default function Navbar() {
               size="sm"
               className="text-slate-300 hover:text-white font-medium"
             >
-              Sign In
+              <Link href="/register">Sign In</Link>
             </Button>
             <Button
               size="sm"

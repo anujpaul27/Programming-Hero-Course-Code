@@ -1,18 +1,5 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @tailwind utilities;
-
-:root {
-  --brand-purple: #7c3aed;
-  --brand-violet: #5b21b6;
-  --brand-glow: #a78bfa;
-  --brand-blue: #3b82f6;
-  --brand-dark: #0d0d1a;
-  --brand-card: #13131f;
-  --brand-border: #1e1e35;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+@import "@heroui/styles"; 
 
