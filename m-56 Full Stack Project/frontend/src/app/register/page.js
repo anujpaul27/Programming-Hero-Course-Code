@@ -1,7 +1,8 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { Input, Label, Spinner } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
+import { authClient } from "../lib/auth-client";
 
 export default function DynamicTypes() {
   const [step, setStep] = useState(1);
@@ -9,13 +10,26 @@ export default function DynamicTypes() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+
+    const formData = new FormData(e.target);
+    const obj = Object.fromEntries(formData.entries());
     
-    // Simulate a database/API call for 2.5 seconds
-    await new Promise((resolve) => setTimeout(resolve, 2500));
-    
-    setIsLoading(false);
-    alert("Form submitted successfully!");
+    // Registration user with betterAuth
+    const {data, error} = await authClient.signUp.email({
+      email: obj.email,
+      password: obj.password,
+      name: obj.name,
+      callbackURL: '/'
+    })
+
+    if (error)
+    {
+      console.log(error.message);
+    }
+    else 
+    {
+      console.log(data);
+    }
     setStep(1); // Reset form
   };
 
@@ -23,25 +37,25 @@ export default function DynamicTypes() {
   const slideVariants = {
     enter: (direction) => ({
       x: direction > 0 ? 100 : -100,
-      opacity: 0
+      opacity: 0,
     }),
     center: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.3, ease: "easeInOut" }
+      transition: { duration: 0.3, ease: "easeInOut" },
     },
     exit: (direction) => ({
       x: direction < 0 ? 100 : -100,
       opacity: 0,
-      transition: { duration: 0.2, ease: "easeInOut" }
-    })
+      transition: { duration: 0.2, ease: "easeInOut" },
+    }),
   };
 
   return (
     <div className="w-full h-screen flex items-center justify-center ">
-      <motion.div 
+      <motion.div
         layout // Smoothly animates size changes of the card
-        className="w-96 p-8  rounded-3xl shadow-2xl border border-slate-100 overflow-hidden"
+        className="w-96 p-8  rounded-3xl shadow-2xl border border-gray-500 overflow-hidden"
       >
         {/* Step Indicator */}
         <div className="flex justify-between items-center mb-6">
@@ -49,63 +63,90 @@ export default function DynamicTypes() {
             Step {step} of 2
           </span>
           <div className="flex gap-1">
-            <div className={`h-1.5 w-6 rounded-full transition-all duration-300 ${step >= 1 ? 'bg-indigo-600' : 'bg-slate-200'}`} />
-            <div className={`h-1.5 w-6 rounded-full transition-all duration-300 ${step === 2 ? 'bg-indigo-600' : 'bg-slate-200'}`} />
+            <div
+              className={`h-1.5 w-6 rounded-full transition-all duration-300 ${step >= 1 ? "bg-indigo-600" : "bg-slate-200"}`}
+            />
+            <div
+              className={`h-1.5 w-6 rounded-full transition-all duration-300 ${step === 2 ? "bg-indigo-600" : "bg-slate-200"}`}
+            />
           </div>
         </div>
 
         <form onSubmit={handleSubmit}>
           {/* AnimatePresence allows elements to animate while they are being removed from the DOM */}
-          <AnimatePresence mode="wait" custom={step === 2 ? 1 : -1}>
-            
-            {step === 1 && (
+          
+            {/* Step 1 Container */}
+            <div className={step === 1 ? "block" : "hidden"}>
               <motion.div
                 key="step1"
                 custom={1}
                 variants={slideVariants}
                 initial="enter"
-                animate="center"
+                animate={step === 1 ? "center" : "exit"}
                 exit="exit"
-                className="flex flex-col gap-4"
+                className="flex flex-col gap-4 text-white"
               >
-                <h2 className="text-xl font-bold text-white">Account Details</h2>
+                <h2 className="text-xl font-bold text-white">
+                  Account Details
+                </h2>
                 <div className="flex flex-col gap-1">
                   <Label htmlFor="input-type-email">Email</Label>
-                  <Input id="input-type-email" placeholder="jane@example.com" type="email" required />
+                  <Input
+                    name="email"
+                    id="input-type-email"
+                    placeholder="jane@example.com"
+                    type="email"
+                    required={step === 1}
+                    className={'text-white'}
+                  />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <Label htmlFor="input-type-number">Age</Label>
-                  <Input id="input-type-number" min={0} placeholder="30" type="number" required />
+                  <Label htmlFor="input-type-text">Name</Label>
+                  <Input
+                    name="name"
+                    id="input-type-text"
+                    min={0}
+                    placeholder="Enter you name"
+                    type="text"
+                    required={step === 1}
+                    className={'text-white'}
+                  />
                 </div>
-                
-                <motion.button
+
+                <button
                   type="button"
-                  whileTap={{ scale: 0.97 }}
-                  whileHover={{ scale: 1.02 }}
                   onClick={() => setStep(2)}
-                  className="mt-2 w-full bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-xl font-medium shadow-md shadow-indigo-100 transition-colors"
+                  className="mt-2 w-full bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-xl font-medium"
                 >
                   Next Step
-                </motion.button>
+                </button>
               </motion.div>
-            )}
+            </div>
 
-            {step === 2 && (
+            {/* Step 2 Container */}
+            <div className={step === 2 ? "block" : "hidden"}>
               <motion.div
                 key="step2"
                 custom={-1}
                 variants={slideVariants}
                 initial="enter"
-                animate="center"
+                animate={step === 2 ? "center" : "exit"}
                 exit="exit"
                 className="flex flex-col gap-4"
               >
                 <h2 className="text-xl font-bold text-slate-800">Security</h2>
                 <div className="flex flex-col gap-1">
                   <Label htmlFor="input-type-password">Password</Label>
-                  <Input id="input-type-password" placeholder="••••••••" type="password" required />
+                  <Input
+                    name="password"
+                    id="input-type-password"
+                    placeholder="••••••••"
+                    type="password"
+                    required={step === 2}
+                  />
                 </div>
 
+                {/* Back and Submit Buttons go here */}
                 <div className="flex gap-3 mt-2">
                   <button
                     type="button"
@@ -115,7 +156,7 @@ export default function DynamicTypes() {
                   >
                     Back
                   </button>
-                  
+
                   {/* Dynamic Submit Button with Loader */}
                   <motion.button
                     type="submit"
@@ -150,9 +191,8 @@ export default function DynamicTypes() {
                   </motion.button>
                 </div>
               </motion.div>
-            )}
-
-          </AnimatePresence>
+            </div>
+          
         </form>
       </motion.div>
     </div>
