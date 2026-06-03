@@ -15,12 +15,14 @@ export default function DynamicTypes() {
 
     const formData = new FormData(e.target);
     const obj = Object.fromEntries(formData.entries());
+    obj.set = true;
     // Registration user with betterAuth
     const { data, error } = await authClient.signUp.email({
       email: obj.email,
       password: obj.password,
       name: obj.name,
       role: obj.role,
+      set: obj.set,
       callbackURL: "/",
     });
 

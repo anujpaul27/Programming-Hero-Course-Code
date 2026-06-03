@@ -12,7 +12,7 @@ export default function LoginForm() {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState ("");
+  const [error, setError] = useState("");
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -24,7 +24,7 @@ export default function LoginForm() {
     const formData = new FormData(e.currentTarget);
     const { email, password } = Object.fromEntries(formData.entries());
 
-    console.log(email,password);
+    console.log(email, password);
 
     // Better-Auth Sign-In call
     await authClient.signIn.email({
@@ -67,7 +67,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-gradient-to-tr from-slate-950 via-zinc-900 to-neutral-950 px-4">
+    <div className="w-full h-screen flex items-center justify-center bg-gradient-to-tr from-slate-950 via-zinc-900 to-neutral-950 px-4 ">
       <motion.div
         variants={cardVariants}
         initial="hidden"
@@ -103,7 +103,7 @@ export default function LoginForm() {
         </AnimatePresence>
 
         {/* Main Form */}
-        <form onSubmit={handleLogin} className="flex flex-col gap-5">
+        <form onSubmit={handleLogin} className="flex flex-col gap-5 mx-auto ">
           {/* Email Field */}
           <motion.div variants={itemVariants}>
             <Input

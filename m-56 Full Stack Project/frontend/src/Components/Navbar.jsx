@@ -58,7 +58,7 @@ export default function Navbar() {
               size="sm"
               className="text-slate-300 hover:text-white font-medium"
             >
-              <Link href="/register">Sign In</Link>
+              <Link href="/login">Sign In</Link>
             </Button>
             <Button
               size="sm"
