@@ -6,9 +6,9 @@ import { useState } from "react";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Find Jobs", href: "#jobs" },
+  { label: "Find Jobs", href: "/jobs" },
   { label: "For Companies", href: "#companies" },
-  { label: "How it Works", href: "#how" },
+  { label: "Dashboard", href: "dashboard" },
   { label: "Pricing", href: "#pricing" },
 ];
 
@@ -25,7 +25,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-6 ">
         <div className="card-glass rounded-2xl px-6 py-3 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
+          <Link  href="/" className="flex items-center gap-2 group">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-purple-700 flex items-center justify-center glow-purple">
               <Zap size={16} className="text-white" />
             </div>
@@ -35,7 +35,7 @@ export default function Navbar() {
             >
               HireLoop
             </span>
-          </a>
+          </Link >
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
