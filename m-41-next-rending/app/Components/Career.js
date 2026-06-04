@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import { experience } from '../data/resume'
+import { experience } from './resume'
 
 export default function Career() {
   const ref = useRef(null)

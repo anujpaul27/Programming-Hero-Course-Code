@@ -1,231 +1,300 @@
 'use client'
-import { useEffect, useRef } from 'react'
-import { personalInfo } from '../data/resume'
+import { useEffect, useRef, useState } from 'react'
+import { meta, stats } from './resume'
+import { FiArrowRight, FiGithub, FiLinkedin, FiDownload } from 'react-icons/fi'
+
+const ROLES = ['Full-Stack Developer', 'MERN Stack Engineer', 'Next.js Specialist', 'Problem Solver']
 
 export default function Hero() {
-  const heroRef = useRef(null)
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [displayed, setDisplayed] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const cursorRef = useRef(null)
 
+  // Typewriter effect
   useEffect(() => {
-    const el = heroRef.current
+    setMounted(true)
+    const currentRole = ROLES[roleIndex]
+    let timeout
+
+    if (!isDeleting) {
+      if (displayed.length < currentRole.length) {
+        timeout = setTimeout(() => {
+          setDisplayed(currentRole.slice(0, displayed.length + 1))
+        }, 80)
+      } else {
+        timeout = setTimeout(() => setIsDeleting(true), 2000)
+      }
+    } else {
+      if (displayed.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayed(displayed.slice(0, -1))
+        }, 40)
+      } else {
+        setIsDeleting(false)
+        setRoleIndex((i) => (i + 1) % ROLES.length)
+      }
+    }
+    return () => clearTimeout(timeout)
+  }, [displayed, isDeleting, roleIndex])
+
+  // Cursor glow follows mouse
+  useEffect(() => {
+    const el = cursorRef.current
     if (!el) return
-    el.style.opacity = '0'
-    el.style.transform = 'translateY(30px)'
-    setTimeout(() => {
-      el.style.transition = 'opacity 1s ease, transform 1s ease'
-      el.style.opacity = '1'
-      el.style.transform = 'translateY(0)'
-    }, 100)
+    const move = (e) => {
+      el.style.left = e.clientX + 'px'
+      el.style.top = e.clientY + 'px'
+    }
+    window.addEventListener('mousemove', move, { passive: true })
+    return () => window.removeEventListener('mousemove', move)
   }, [])
 
   return (
     <section style={{
       minHeight: '100svh',
       display: 'flex',
-      alignItems: 'center',
+      flexDirection: 'column',
+      justifyContent: 'center',
       position: 'relative',
       overflow: 'hidden',
-      padding: '100px 5% 60px',
-    }}>
-      {/* Background orb */}
+      padding: '120px 24px 80px',
+    }} className="grid-bg">
+
+      {/* Cursor glow */}
+      <div ref={cursorRef} className="cursor-glow" style={{ opacity: mounted ? 1 : 0 }} />
+
+      {/* Background blobs */}
       <div style={{
-        position: 'absolute',
-        top: '-20%',
-        left: '-10%',
-        width: '600px',
-        height: '600px',
-        background: 'radial-gradient(circle, rgba(155,109,255,0.15) 0%, transparent 70%)',
-        borderRadius: '50%',
+        position: 'absolute', top: '-30%', right: '-10%',
+        width: '600px', height: '600px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(100,120,255,0.08) 0%, transparent 70%)',
         pointerEvents: 'none',
-        animation: 'orbFloat 8s ease-in-out infinite',
       }} />
       <div style={{
-        position: 'absolute',
-        bottom: '-10%',
-        right: '-5%',
-        width: '400px',
-        height: '400px',
-        background: 'radial-gradient(circle, rgba(194,164,255,0.08) 0%, transparent 70%)',
-        borderRadius: '50%',
+        position: 'absolute', bottom: '-20%', left: '-5%',
+        width: '400px', height: '400px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(100,200,255,0.05) 0%, transparent 70%)',
         pointerEvents: 'none',
-        animation: 'orbFloat 10s ease-in-out infinite reverse',
       }} />
 
-      <div ref={heroRef} style={{ width: '100%', maxWidth: '1300px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 2 }}>
+
+        {/* Status badge */}
         <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '16px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '6px 16px',
+          background: 'rgba(100,255,180,0.08)',
+          border: '1px solid rgba(100,255,180,0.2)',
+          borderRadius: '100px',
+          fontSize: '13px',
+          color: 'var(--green)',
+          marginBottom: '32px',
+          fontFamily: 'DM Mono, monospace',
         }}>
           <span style={{
-            color: 'var(--accent)',
-            fontSize: '14px',
-            letterSpacing: '4px',
-            fontWeight: 500,
-            textTransform: 'uppercase',
+            width: '6px', height: '6px', borderRadius: '50%',
+            background: 'var(--green)',
+            animation: 'pulse 2s ease-in-out infinite',
+          }} />
+          Available for opportunities
+        </div>
+
+        {/* Name */}
+        <h1 style={{
+          fontSize: 'clamp(48px, 8vw, 100px)',
+          fontWeight: 800,
+          lineHeight: 0.95,
+          letterSpacing: '-0.04em',
+          marginBottom: '24px',
+        }}>
+          <span style={{ display: 'block', color: 'var(--text)' }}>Anuj</span>
+          <span style={{
+            display: 'block',
+            background: 'linear-gradient(135deg, var(--accent) 0%, #a78bfa 50%, var(--accent-2) 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            backgroundSize: '200% auto',
+            animation: 'shimmer 4s linear infinite',
           }}>
-            Hello, I&apos;m
+            Paul.
           </span>
+        </h1>
 
-          <h1 style={{
-            fontSize: 'clamp(52px, 10vw, 120px)',
-            fontWeight: 700,
-            lineHeight: 0.95,
-            letterSpacing: '-2px',
-          }}>
-            <span style={{ display: 'block' }}>ANUJ</span>
-            <span style={{
-              display: 'block',
-              background: 'linear-gradient(135deg, #c2a4ff 0%, #7b4fff 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>
-              PAUL
-            </span>
-          </h1>
+        {/* Typewriter role */}
+        <div style={{
+          fontSize: 'clamp(18px, 3vw, 28px)',
+          color: 'var(--text-2)',
+          marginBottom: '28px',
+          fontWeight: 300,
+          fontFamily: 'DM Mono, monospace',
+          letterSpacing: '-0.01em',
+          height: '40px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '2px',
+        }}>
+          <span style={{ color: 'var(--accent)' }}>$ </span>
+          <span>{displayed}</span>
+          <span style={{
+            display: 'inline-block',
+            width: '2px',
+            height: '1.2em',
+            background: 'var(--accent)',
+            animation: 'blink 1s step-end infinite',
+            marginLeft: '1px',
+          }} />
+        </div>
 
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '16px',
-            marginTop: '8px',
-            flexWrap: 'wrap',
-          }}>
-            <span style={{
-              color: 'rgba(255,255,255,0.5)',
-              fontSize: 'clamp(14px, 2vw, 18px)',
-              fontWeight: 300,
-              letterSpacing: '2px',
-            }}>
-              A Creative
-            </span>
-            <div style={{
-              height: '28px',
-              overflow: 'hidden',
-              fontSize: 'clamp(16px, 2.5vw, 22px)',
-              fontWeight: 600,
-              color: 'var(--accent)',
-            }}>
-              <div style={{ animation: 'slideText 4s infinite ease-in-out' }}>
-                <div>Full-Stack Developer</div>
-                <div>MERN Stack Engineer</div>
-                <div>UI/UX Enthusiast</div>
+        {/* Bio */}
+        <p style={{
+          fontSize: 'clamp(15px, 1.5vw, 18px)',
+          color: 'var(--text-2)',
+          maxWidth: '580px',
+          lineHeight: 1.7,
+          fontWeight: 300,
+          marginBottom: '40px',
+        }}>
+          {meta.bio}
+        </p>
+
+        {/* CTA buttons */}
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '64px' }}>
+          <a
+            href="#projects"
+            className="btn-primary"
+            onClick={e => {
+              e.preventDefault()
+              document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+          >
+            View Projects <FiArrowRight size={16} />
+          </a>
+          <a href={`mailto:${meta.email}`} className="btn-secondary">
+            Let&apos;s Talk
+          </a>
+          <a
+            href={meta.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '12px',
+              background: 'var(--surface)',
+              border: '1px solid var(--border)',
+              borderRadius: '8px',
+              color: 'var(--text-2)',
+              transition: 'all 0.2s',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'var(--border-hover)'
+              e.currentTarget.style.color = 'var(--text)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'var(--border)'
+              e.currentTarget.style.color = 'var(--text-2)'
+            }}
+          >
+            <FiGithub size={18} />
+          </a>
+          <a
+            href={meta.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '12px',
+              background: 'var(--surface)',
+              border: '1px solid var(--border)',
+              borderRadius: '8px',
+              color: 'var(--text-2)',
+              transition: 'all 0.2s',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'var(--border-hover)'
+              e.currentTarget.style.color = 'var(--text)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'var(--border)'
+              e.currentTarget.style.color = 'var(--text-2)'
+            }}
+          >
+            <FiLinkedin size={18} />
+          </a>
+        </div>
+
+        {/* Stats row */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+          gap: '1px',
+          background: 'var(--border)',
+          borderRadius: '16px',
+          overflow: 'hidden',
+          maxWidth: '720px',
+          border: '1px solid var(--border)',
+        }}>
+          {stats.map((stat, i) => (
+            <div key={i} style={{
+              background: 'var(--bg-card)',
+              padding: '20px 24px',
+              transition: 'background 0.2s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-card-hover)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-card)'}
+            >
+              <div style={{
+                fontSize: '24px',
+                fontFamily: 'Syne, sans-serif',
+                fontWeight: 800,
+                color: 'var(--accent)',
+                marginBottom: '4px',
+              }}>
+                {stat.value}
+              </div>
+              <div style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.3 }}>
+                {stat.label}
               </div>
             </div>
-          </div>
-
-          <p style={{
-            marginTop: '20px',
-            fontSize: 'clamp(14px, 1.5vw, 17px)',
-            color: 'rgba(255,255,255,0.5)',
-            maxWidth: '480px',
-            lineHeight: 1.7,
-            fontWeight: 300,
-          }}>
-            Building scalable web applications with modern technologies.
-            300+ problems solved on Codeforces & CodeChef.
-          </p>
-
-          <div style={{
-            display: 'flex',
-            gap: '16px',
-            marginTop: '32px',
-            flexWrap: 'wrap',
-          }}>
-            <a
-              href="#work"
-              onClick={e => {
-                e.preventDefault()
-                document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              style={{
-                padding: '14px 32px',
-                background: 'var(--accent)',
-                color: '#0b080c',
-                borderRadius: '4px',
-                fontWeight: 700,
-                fontSize: '13px',
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                transition: 'transform 0.2s, box-shadow 0.2s',
-                display: 'inline-block',
-              }}
-              onMouseEnter={e => {
-                e.target.style.transform = 'translateY(-2px)'
-                e.target.style.boxShadow = '0 10px 30px rgba(194,164,255,0.3)'
-              }}
-              onMouseLeave={e => {
-                e.target.style.transform = 'translateY(0)'
-                e.target.style.boxShadow = 'none'
-              }}
-            >
-              View Work
-            </a>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              style={{
-                padding: '14px 32px',
-                border: '1px solid rgba(255,255,255,0.2)',
-                borderRadius: '4px',
-                fontWeight: 600,
-                fontSize: '13px',
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                transition: 'all 0.2s',
-                display: 'inline-block',
-              }}
-              onMouseEnter={e => {
-                e.target.style.borderColor = 'var(--accent)'
-                e.target.style.color = 'var(--accent)'
-              }}
-              onMouseLeave={e => {
-                e.target.style.borderColor = 'rgba(255,255,255,0.2)'
-                e.target.style.color = 'inherit'
-              }}
-            >
-              Contact Me
-            </a>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll hint */}
       <div style={{
         position: 'absolute',
         bottom: '40px',
-        left: '50%',
-        transform: 'translateX(-50%)',
+        right: '40px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         gap: '8px',
         opacity: 0.4,
-        animation: 'fadeUp 1s 1.5s both',
+        fontSize: '11px',
+        letterSpacing: '0.1em',
+        color: 'var(--text-3)',
+        writingMode: 'vertical-rl',
+        fontFamily: 'DM Mono, monospace',
       }}>
-        <span style={{ fontSize: '11px', letterSpacing: '3px' }}>SCROLL</span>
+        SCROLL DOWN
         <div style={{
           width: '1px',
-          height: '40px',
-          background: 'linear-gradient(to bottom, #fff, transparent)',
-          animation: 'scrollLine 2s ease-in-out infinite',
+          height: '48px',
+          background: 'linear-gradient(to bottom, var(--text-3), transparent)',
         }} />
       </div>
 
       <style>{`
-        @keyframes orbFloat {
-          0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-30px) scale(1.05); }
-        }
-        @keyframes slideText {
-          0%, 30% { transform: translateY(0); }
-          33%, 63% { transform: translateY(-100%); }
-          66%, 96% { transform: translateY(-200%); }
-          100% { transform: translateY(0); }
-        }
-        @keyframes scrollLine {
-          0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
-          50% { opacity: 1; transform: scaleY(1); }
-          100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+        @media (max-width: 768px) {
+          .cursor-glow { display: none; }
         }
       `}</style>
     </section>

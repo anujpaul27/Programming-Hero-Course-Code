@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import { skills } from '../data/resume'
+import { skills } from './resume'
 
 const skillCategories = [
   { label: 'FRONTEND', items: skills.frontend, color: '#c2a4ff' },

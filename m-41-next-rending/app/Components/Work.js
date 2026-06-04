@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { projects } from '../data/resume'
+import { projects } from './resume'
 import { FiExternalLink, FiGithub } from 'react-icons/fi'
 
 export default function Work() {

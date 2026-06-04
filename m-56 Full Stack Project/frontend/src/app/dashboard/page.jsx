@@ -349,7 +349,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="p-8  ">
+    <div className="p-8 lg:w-10/12 mx-auto  ">
       <AnimatePresence mode="wait">
         <motion.div
           key={activeRole}

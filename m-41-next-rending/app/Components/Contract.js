@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { personalInfo } from '../data/resume'
+import { personalInfo } from './resume'
 import { FiGithub, FiLinkedin, FiTwitter, FiInstagram, FiArrowUpRight } from 'react-icons/fi'
 
 const socialLinks = [
