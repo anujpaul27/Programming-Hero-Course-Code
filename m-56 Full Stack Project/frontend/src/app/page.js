@@ -9,10 +9,10 @@ import TestimonialsSection from "@/Components/TestimonialsCard";
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="relative w-10/11 mx-auto ">
       <HeroSection />
       <FeaturesSection />
-      <JobListingsSection/>
+      <JobListingsSection/> 
       <TestimonialsSection/>
       <ForCompaniesSection/>
       <PricingSection/>
