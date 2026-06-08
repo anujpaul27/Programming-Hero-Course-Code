@@ -27,3 +27,24 @@ async function createJobPost (req,res)
         });
     }
 }
+
+async function getAllJobPosts (req,res)
+{
+    try {
+        const jobPosts = await jobPostModel.find().toArray();
+        res.status(200).json({
+            message: 'Job posts retrieved successfully',
+            jobPosts,
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            message: `Error retrieving job posts ${error.message}`,
+        });
+    }
+}
+
+module.exports = {
+    createJobPost,
+    getAllJobPosts,
+};
