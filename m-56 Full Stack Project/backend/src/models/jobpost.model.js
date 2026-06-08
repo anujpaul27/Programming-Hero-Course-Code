@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const jobPostSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -18,6 +17,7 @@ const jobPostSchema = new mongoose.Schema({
         type: String,
         enum: ['Entry Level', 'Mid Level', 'Senior Level','lead'],
         default: 'Entry Level',
+        required: true,
     },
     location: {
         type: String,
@@ -40,3 +40,7 @@ const jobPostSchema = new mongoose.Schema({
     }
 
 })
+
+const jobPostModel = mongoose.model('JobPost', jobPostSchema);
+
+module.exports = jobPostModel;
