@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Routes
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Server is ruuning');
 });
 
 module.exports = app;

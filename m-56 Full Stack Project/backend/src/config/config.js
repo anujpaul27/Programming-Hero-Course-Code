@@ -9,7 +9,7 @@ if (!process.env.MONGODB_URI)
 
 const config = {
     MONGODB_URI: process.env.MONGODB_URI,
-    PORT: process.env.PORT || 3000,
+    PORT: process.env.PORT || 5000,
 };
 
-module.exports = config;
+module.exports = config;    
