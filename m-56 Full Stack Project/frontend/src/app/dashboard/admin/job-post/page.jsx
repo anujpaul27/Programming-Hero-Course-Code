@@ -57,31 +57,15 @@ export default function PostJobPage() {
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSuccess(true);
+    const formData = new FormData(e.target);
+    const payload = Object.fromEntries(formData.entries());
+    console.log("Submitting Job:", payload);
+    
 
-      setTimeout(() => {
-        setSuccess(false);
-        setFormData({
-          title: "",
-          company: "",
-          location: "",
-          type: "Full-time",
-          salaryMin: "",
-          salaryMax: "",
-          experience: "Mid Level",
-          description: "",
-          requirements: "",
-        });
-        setErrors({});
-      }, 2500);
-    }, 1800);
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 p-6 lg:p-10">
+    <div className="min-h-screen bg-zinc-950 p-4 lg:p-10">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -110,7 +94,7 @@ export default function PostJobPage() {
                   name="title"
                   value={formData.title}
                   onChange={handleChange}
-                  className={`w-full px-5 py-3.5 bg-zinc-800 border rounded-2xl focus:outline-none focus:ring-2 transition-all text-white placeholder:text-zinc-500
+                  className={`w-full px-5 py-2.5 bg-zinc-800 border rounded-2xl focus:outline-none focus:ring-2 transition-all text-white placeholder:text-zinc-500
                     ${errors.title ? "border-red-500" : "border-zinc-700 focus:border-blue-500"}`}
                   placeholder="Senior Frontend Engineer"
                 />
@@ -133,7 +117,7 @@ export default function PostJobPage() {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  className={`w-full px-5 py-3.5 bg-zinc-800 border rounded-2xl focus:outline-none focus:ring-2 transition-all text-white placeholder:text-zinc-500
+                  className={`w-full px-5 py-2.5 bg-zinc-800 border rounded-2xl focus:outline-none focus:ring-2 transition-all text-white placeholder:text-zinc-500
                     ${errors.company ? "border-red-500" : "border-zinc-700 focus:border-blue-500"}`}
                   placeholder="LinkUp Inc."
                 />
@@ -157,7 +141,7 @@ export default function PostJobPage() {
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
-                    className={`w-full px-5 py-3.5 bg-zinc-800 border rounded-2xl focus:outline-none focus:ring-2 transition-all text-white placeholder:text-zinc-500
+                    className={`w-full px-5 py-2.5 bg-zinc-800 border rounded-2xl focus:outline-none focus:ring-2 transition-all text-white placeholder:text-zinc-500
                       ${errors.location ? "border-red-500" : "border-zinc-700 focus:border-blue-500"}`}
                     placeholder="New York, NY or Remote"
                   />
@@ -184,7 +168,7 @@ export default function PostJobPage() {
                   name="type"
                   value={formData.type}
                   onChange={handleChange}
-                  className="w-full px-5 py-3.5 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none focus:border-blue-500 text-white"
+                  className="w-full px-5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none focus:border-blue-500 text-white"
                 >
                   <option value="Full-time">Full-time</option>
                   <option value="Part-time">Part-time</option>
@@ -203,7 +187,7 @@ export default function PostJobPage() {
                   name="experience"
                   value={formData.experience}
                   onChange={handleChange}
-                  className="w-full px-5 py-3.5 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none focus:border-blue-500 text-white"
+                  className="w-full px-5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none focus:border-blue-500 text-white"
                 >
                   <option value="Entry Level">Entry Level</option>
                   <option value="Mid Level">Mid Level</option>
@@ -228,7 +212,7 @@ export default function PostJobPage() {
                       name="salaryMin"
                       value={formData.salaryMin}
                       onChange={handleChange}
-                      className="w-full pl-12 pr-5 py-3.5 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none focus:border-blue-500 text-white"
+                      className="w-full pl-12 pr-5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none focus:border-blue-500 text-white"
                       placeholder="80,000"
                     />
                   </div>
@@ -243,7 +227,7 @@ export default function PostJobPage() {
                       name="salaryMax"
                       value={formData.salaryMax}
                       onChange={handleChange}
-                      className="w-full pl-12 pr-5 py-3.5 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none focus:border-blue-500 text-white"
+                      className="w-full pl-12 pr-5 py-2.5 bg-zinc-800 border border-zinc-700 rounded-2xl focus:outline-none focus:border-blue-500 text-white"
                       placeholder="120,000"
                     />
                   </div>
