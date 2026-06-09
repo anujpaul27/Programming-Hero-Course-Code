@@ -35,10 +35,7 @@ const jobPostSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['Full Time', 'Part Time', 'Contract', 'Internship','remote'],
-        default: 'Full Time',
     }
-
 })
 
 const jobPostModel = mongoose.model('JobPost', jobPostSchema);
