@@ -59,9 +59,46 @@ export default function PostJobPage() {
 
     const formData = new FormData(e.target);
     const payload = Object.fromEntries(formData.entries());
-    console.log("Submitting Job:", payload);
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/job/create`,{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })   
+      
+      if (!response.ok) {
+        setIsSubmitting(false);
+        setSuccess(false);
+        setErrors({ submit: "Failed to submit job post. Please try again." });
+      }
+      else 
+      {
+        const data = await response.json();
+        console.log(data.jobPost);
+        setIsSubmitting(false);
+        setSuccess(true);
+        setFormData({
+          title: "",
+          company: "",
+          location: "",
+          type: "Full-time",
+          salaryMin: "",
+          salaryMax: "",
+          experience: "Mid Level",
+          description: "",
+          requirements: "",
+        });
+      }
+    }
+    catch (error) {
+      setIsSubmitting(false);
+      setSuccess(false);
+      setErrors({ submit: "Failed to submit job post. Please try again." });
+      console.error('Error submitting job post:', error);
+    }
     
-
   };
 
   return (

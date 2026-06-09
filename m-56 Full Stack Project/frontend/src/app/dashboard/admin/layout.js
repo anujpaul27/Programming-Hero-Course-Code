@@ -36,13 +36,13 @@ export default function RootLayout({ children }) {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/dashboard/admin/jobs-list"
                     className="hover:bg-zinc-800 active:bg-zinc-700 py-3"
                   >
                     <BriefcaseIcon size={20} />
                     <span>Jobs</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link

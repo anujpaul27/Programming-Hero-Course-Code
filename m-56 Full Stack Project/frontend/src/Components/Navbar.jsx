@@ -8,7 +8,7 @@ import Link from "next/link";
 const navLinks = [
   { label: "Find Jobs", href: "/jobs" },
   { label: "For Companies", href: "#companies" },
-  { label: "Dashboard", href: "dashboard" },
+  { label: "Dashboard", href: "dashboard/admin" },
   { label: "Pricing", href: "#pricing" },
 ];
 
