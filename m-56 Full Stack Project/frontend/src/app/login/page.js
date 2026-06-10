@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Input, Button, Spinner } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, AlertCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { authClient } from "../lib/auth-client";
 
@@ -13,6 +13,9 @@ export default function LoginForm() {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const searchParams = useSearchParams()
+  const redirectTo = searchParams.get('redirect' || '/')
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -30,7 +33,7 @@ export default function LoginForm() {
     await authClient.signIn.email({
       email,
       password,
-      callbackURL: "/",
+      callbackURL: redirectTo,
       onRequest: () => {
         setIsLoading(true);
       },
@@ -218,7 +221,7 @@ export default function LoginForm() {
         >
           Do not have an account?{" "}
           <Link
-            href="/register"
+            href={`/register${redirectTo !== '/'&& `?redirect/=${redirectTo || '/'}`}`}
             className="text-zinc-300 hover:text-white font-medium hover:underline transition-colors"
           >
             Sign up

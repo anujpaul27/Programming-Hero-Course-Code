@@ -1,20 +1,19 @@
 import { auth } from "@/app/lib/auth";
 import { getUserServer } from "@/Components/share/getUser";
 import { headers } from "next/headers";
+import PostJobPage from "./jobPost";
+import { redirect } from "next/navigation";
 
 const JobPostParent = async () => {
   const user = await getUserServer();
-  console.log(user)
+
+  if (!user) {
+    redirect('/login?redirect=/dashboard/admin/job-post');
+  }
+
   return (
     <div>
-      {user ? (
-        <div>
-          <h1>Job Post</h1>
-          <p>Welcome, {user.name}!</p>
-        </div>
-      ) : (
-        <p>Please log in to view this page.</p>
-      )}
+      <PostJobPage creator={user.name} />
     </div>
   );
 };

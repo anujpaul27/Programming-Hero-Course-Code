@@ -10,7 +10,7 @@ import {
   UsersIcon,
 } from "lucide-react";
 
-export default function PostJobPage() {
+export default function PostJobPage({creator}) {
   const [formData, setFormData] = useState({
     title: "",
     company: "",
@@ -59,6 +59,7 @@ export default function PostJobPage() {
 
     const formData = new FormData(e.target);
     const payload = Object.fromEntries(formData.entries());
+    payload.creator = creator
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/job/create`,{
         method: 'POST',
