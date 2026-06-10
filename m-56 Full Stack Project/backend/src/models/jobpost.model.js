@@ -28,12 +28,21 @@ const jobPostSchema = new mongoose.Schema({
 
     },
     salaryMax: {
-        type: Number,
+        type: String,
     },
     salaryMin :{
-        type: Number,
+        type: String,
     },
     type: {
+        type: String,
+    },
+    creatorId: {
+        type: String,
+    },
+    creator:{
+        type: String,
+    },
+    image: {
         type: String,
     }
 })
