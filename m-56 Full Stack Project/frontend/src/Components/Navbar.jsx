@@ -2,8 +2,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@heroui/react";
 import { Zap, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { authClient } from "@/app/lib/auth-client";
 
 const navLinks = [
   { label: "Find Jobs", href: "/jobs" },
@@ -13,7 +14,9 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);  
+  const { data: session, isPending, error } = authClient.useSession()
+
 
   return (
     <motion.header
@@ -53,13 +56,18 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button
-              variant="ghost"
+            <p
               size="sm"
-              className="text-slate-300 hover:text-white font-medium"
+              className="text-sm font-medium text-slate-400 hover:text-white transition-colors duration-200 "
             >
-              <Link href="/login">Sign In</Link>
-            </Button>
+              {
+                !isPending ?
+                <>
+                {session ? <Link href="/signout">SignOut</Link> : <Link href="/login">Sign In</Link>}
+                </>
+                : <p>loading..</p>
+              }
+            </p>
             <Button
               size="sm"
               className="bg-gradient-to-r from-violet-600 to-purple-700 text-white font-semibold px-5 rounded-xl glow-purple border-0"
