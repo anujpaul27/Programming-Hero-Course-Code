@@ -15,7 +15,8 @@ export default function LoginForm() {
   const [error, setError] = useState("");
 
   const searchParams = useSearchParams()
-  const redirectTo = searchParams.get('redirect' || '/')
+  const redirectTo = searchParams.get('redirect')
+  console.log(redirectTo);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -33,7 +34,7 @@ export default function LoginForm() {
     await authClient.signIn.email({
       email,
       password,
-      callbackURL: redirectTo,
+      callbackURL: redirectTo || '/',
       onRequest: () => {
         setIsLoading(true);
       },
@@ -221,7 +222,7 @@ export default function LoginForm() {
         >
           Do not have an account?{" "}
           <Link
-            href={`/register${redirectTo !== '/'&& `?redirect/=${redirectTo || '/'}`}`}
+            href={`/register${redirectTo !== '/'&& `?redirect=${redirectTo || '/'}`}`}
             className="text-zinc-300 hover:text-white font-medium hover:underline transition-colors"
           >
             Sign up

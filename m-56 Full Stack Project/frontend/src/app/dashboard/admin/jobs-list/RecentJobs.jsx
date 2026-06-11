@@ -95,7 +95,7 @@ export default function RecentJobs() {
             </thead>
             <tbody className="divide-y divide-zinc-800">
               {jobs.map((job) => (
-                <tr key={job.id} className="hover:bg-zinc-800/50 transition-colors">
+                <tr key={job._id} className="hover:bg-zinc-800/50 transition-colors">
                   <td className="font-medium text-white py-4">{job.title}</td>
                   <td className="py-4">{job.company}</td>
                   <td className="py-4">

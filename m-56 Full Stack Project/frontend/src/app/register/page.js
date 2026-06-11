@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import {Select, Input, Label, ListBox, Spinner } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { authClient } from "../lib/auth-client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function DynamicTypes() {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
+  const searchParams = useSearchParams()
+  const redirectTo = searchParams.get('redirect')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,13 +26,13 @@ export default function DynamicTypes() {
       name: obj.name,
       role: obj.role,
       set: obj.set,
-      callbackURL: "/",
+      callbackURL: redirectTo,
     });
 
     if (error) {
       console.log(error.message);
     } else {
-      router.push("/");
+      router.push(redirectTo);
     }
     setStep(1); // Reset form
   };

@@ -13,7 +13,7 @@ const JobPostParent = async () => {
 
   return (
     <div>
-      <PostJobPage creator={user.name} />
+      <PostJobPage creator={user.name} creatorId={user.id} />
     </div>
   );
 };

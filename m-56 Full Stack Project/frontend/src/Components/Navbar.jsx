@@ -56,7 +56,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <p
+            <div
               size="sm"
               className="text-sm font-medium text-slate-400 hover:text-white transition-colors duration-200 "
             >
@@ -67,7 +67,7 @@ export default function Navbar() {
                 </>
                 : <p>loading..</p>
               }
-            </p>
+            </div>
             <Button
               size="sm"
               className="bg-gradient-to-r from-violet-600 to-purple-700 text-white font-semibold px-5 rounded-xl glow-purple border-0"

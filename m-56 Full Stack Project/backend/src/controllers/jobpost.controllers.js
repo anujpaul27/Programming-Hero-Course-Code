@@ -52,7 +52,35 @@ async function getAllJobPosts (req,res)
     }
 }
 
+async function getJobDetailsWithSpecificId (req,res)
+{
+    const jobId = req.params.id;
+
+    try 
+    {
+        const job = await jobPostModel.findById(jobId)
+
+        if (!job)
+        {
+            return res.status(400).json({
+                message: 'Job Not Found',
+            })
+        }
+
+        res.status(200).json({
+            job
+        })
+    }
+    catch (error)
+    {
+        res.status(500).json({
+            message: `Internal Server Error, ${error.message}`
+        })
+    }
+}
+
 module.exports = {
     createJobPost,
     getAllJobPosts,
+    getJobDetailsWithSpecificId
 };

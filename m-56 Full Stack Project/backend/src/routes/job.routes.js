@@ -1,5 +1,5 @@
 const express = require('express');
-const { createJobPost, getAllJobPosts } = require('../controllers/jobpost.controllers');
+const { createJobPost, getAllJobPosts, getJobDetailsWithSpecificId } = require('../controllers/jobpost.controllers');
 const router = express.Router();
 
 /**
@@ -15,6 +15,13 @@ router.post('/create', createJobPost);
  * @access  Private
  */
 router.get('/all', getAllJobPosts);
+
+/**
+ * @route   GET /api/job/:id
+ * @desc    Get the specific job by jobId
+ * @access  Private
+ */
+router.get('/:id', getJobDetailsWithSpecificId)
 
 
 module.exports = router;
