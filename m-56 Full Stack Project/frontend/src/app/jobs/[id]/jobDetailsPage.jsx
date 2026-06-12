@@ -132,7 +132,7 @@ export default function JobDetailsPage({ job, error }) {
               whileTap={{ scale: 0.98 }}
               className="mt-12 w-full py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl text-xl shadow-xl shadow-blue-500/30 hover:shadow-2xl transition-all"
             >
-              <Link href={`apply`}>Apply for this Position</Link>
+              <Link href={`${job._id}/apply`}>Apply for this Position</Link>
             </motion.button>
           </div>
         </motion.div>
