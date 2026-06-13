@@ -1,14 +1,20 @@
-import { NextResponse } from 'next/server'
-import { headers } from 'next/headers'
-import { stripe } from '@/app/lib/stripe';
-import { getUserServer } from '@/Components/share/getUser';
+import { NextResponse } from "next/server";
+import { headers } from "next/headers";
+import { priceList, stripe } from "@/app/lib/stripe";
+import { getUserServer } from "@/Components/share/getUser";
 
-
-export async function POST() {
+export async function POST(req) {
   try {
-    const headersList = await headers()
-    const origin = headersList.get('origin')
-    const user = await getUserServer()
+    const headersList = await headers();
+    const origin = headersList.get("origin");
+    const user = await getUserServer();
+
+    // access hidden form data
+    const formData = await req.formData();
+    const pricingData = formData.get("pricing-id");
+    console.log(pricingData);
+    const pricingId = priceList[pricingData];
+    console.log(pricingId);
 
     // Create Checkout Sessions from body params.
     const session = await stripe.checkout.sessions.create({
@@ -16,18 +22,18 @@ export async function POST() {
       line_items: [
         {
           // Provide the exact Price ID (for example, price_1234) of the product you want to sell
-          price: 'price_1ThLISE903nf4X6sAt90JKKL',
+          price: pricingId || "price_1ThLISE903nf4X6sAt90JKKL",
           quantity: 1,
         },
       ],
-      mode: 'subscription',
+      mode: "subscription",
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
     });
-    return NextResponse.redirect(session.url, 303)
+    return NextResponse.redirect(session.url, 303);
   } catch (err) {
     return NextResponse.json(
       { error: err.message },
-      { status: err.statusCode || 500 }
-    )
+      { status: err.statusCode || 500 },
+    );
   }
 }

@@ -57,7 +57,7 @@ export default function SuccessClient({ session }) {
           {session?.id && (
             <div className="flex justify-between text-sm">
               <span className="text-gray-500 dark:text-gray-400">Order ID:</span>
-              <span className="font-mono text-xs text-gray-400 dark:text-gray-500 max-w-[180px] truncate" title={session.id}>
+              <span className="font-mono text-xs text-gray-400 dark:text-gray-500 max-w-5xl truncate" title={session.id}>
                 {session.id}
               </span>
             </div>

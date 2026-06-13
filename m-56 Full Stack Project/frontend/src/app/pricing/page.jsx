@@ -10,8 +10,9 @@ export default function PricingPage() {
   const pricingData = {
     seeker: [
       {
-        name: "Free Seeker",
-        price: "$0",
+        name: "Starter Seeker",
+        id: 'starter-seeker',
+        price: "$10",
         description: "Perfect for testing out the HireLoop platform.",
         features: [
           { text: "Apply up to 3 jobs maximum", included: true },
@@ -27,6 +28,7 @@ export default function PricingPage() {
       },
       {
         name: "Premium Seeker",
+        id: 'premium-seeker',
         price: "$19",
         period: "/month",
         description:
@@ -46,7 +48,8 @@ export default function PricingPage() {
     ],
     recruiter: [
       {
-        name: "Starter HR",
+        name: "Starter Recruiter",
+        id: 'recruiter-starter',
         price: "$49",
         period: "/month",
         description: "Ideal for small teams or startups looking to hire.",
@@ -63,7 +66,8 @@ export default function PricingPage() {
         popular: false,
       },
       {
-        name: "Enterprise Talent",
+        name: "Enterprise Recruiter",
+        id: 'recruiter-enterprise',
         price: "$149",
         period: "/month",
         description: "Scale your workforce with high-volume pipelines.",
@@ -101,7 +105,7 @@ export default function PricingPage() {
     <div className="bg-zinc-950 text-zinc-100 min-h-screen py-16 px-4 sm:px-6 lg:px-8 selection:bg-blue-500 selection:text-white">
       {/* Header Section */}
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400">
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl bg-clip-text text-transparent  from-zinc-100 to-zinc-400">
           Flexible Plans for HireLoop
         </h1>
         <p className="mt-4 text-lg text-zinc-400">
@@ -167,7 +171,7 @@ export default function PricingPage() {
                 <h3 className="text-2xl font-bold text-zinc-100">
                   {plan.name}
                 </h3>
-                <p className="text-zinc-400 mt-2 text-sm min-h-[40px] leading-relaxed">
+                <p className="text-zinc-400 mt-2 text-sm  leading-relaxed">
                   {plan.description}
                 </p>
                 <div className="mt-4 flex items-baseline text-zinc-100">
@@ -186,7 +190,7 @@ export default function PricingPage() {
               <ul className="space-y-4 border-t border-zinc-800/80 pt-6 mb-8">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start">
-                    <div className="flex-shrink-0 mt-0.5">
+                    <div className=" mt-0.5">
                       {feature.included ? (
                         <Check
                           className={`h-4 w-4 ${role === "seeker" ? "text-blue-400" : "text-emerald-400"}`}
@@ -207,6 +211,7 @@ export default function PricingPage() {
 
             {/* Action Button */}
             <form action="/api/checkout_sessions" method="POST">
+              <input type="hidden" name='pricing-id' value={plan.id} />
               <Button
                 className={"btn btn-primary text-center "}
                 type="submit"
