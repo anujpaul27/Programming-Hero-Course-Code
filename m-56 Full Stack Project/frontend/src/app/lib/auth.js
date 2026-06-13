@@ -22,6 +22,10 @@ export const auth = betterAuth({
       {
         type:String,
         default: 'Seeker'
+      },
+      memberStatus : {
+        type: String,
+        default:'free'
       }
     }
   }

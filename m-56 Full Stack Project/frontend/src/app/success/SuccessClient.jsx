@@ -1,19 +1,20 @@
 // app/success/SuccessClient.jsx
-'use client';
+"use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function SuccessClient({ session }) {
-  const customerName = session?.customer_details?.name || 'Customer';
+  const customerName = session?.customer_details?.name || "Customer";
   const customerEmail = session?.customer_details?.email;
   // Stripe amounts are in cents, so we divide by 100
-  const totalAmount = session?.amount_total ? (session.amount_total / 100).toFixed(2) : '0.00';
-  const currency = session?.currency?.toUpperCase() || 'USD';
+  const totalAmount = session?.amount_total
+    ? (session.amount_total / 100).toFixed(2)
+    : "0.00";
+  const currency = session?.currency?.toUpperCase() || "USD";
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
       <div className="max-w-md w-full space-y-8 p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-2xl text-center border border-transparent dark:border-gray-700">
-        
         {/* Success Icon */}
         <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30">
           <svg
@@ -45,19 +46,30 @@ export default function SuccessClient({ session }) {
         {/* Order Details Card */}
         <div className="border-t border-b border-gray-200 dark:border-gray-700 py-4 my-6 text-left space-y-3">
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500 dark:text-gray-400">Receipt sent to:</span>
-            <span className="font-medium text-gray-900 dark:text-gray-200 break-all">{customerEmail}</span>
+            <span className="text-gray-500 dark:text-gray-400">
+              Receipt sent to:
+            </span>
+            <span className="font-medium text-gray-900 dark:text-gray-200 break-all">
+              {customerEmail}
+            </span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500 dark:text-gray-400">Total Paid:</span>
+            <span className="text-gray-500 dark:text-gray-400">
+              Total Paid:
+            </span>
             <span className="font-bold text-gray-900 dark:text-white">
               {totalAmount} {currency}
             </span>
           </div>
           {session?.id && (
             <div className="flex justify-between text-sm">
-              <span className="text-gray-500 dark:text-gray-400">Order ID:</span>
-              <span className="font-mono text-xs text-gray-400 dark:text-gray-500 max-w-5xl truncate" title={session.id}>
+              <span className="text-gray-500 dark:text-gray-400">
+                Order ID:
+              </span>
+              <span
+                className="font-mono text-xs text-gray-400 dark:text-gray-500 max-w-5xl truncate"
+                title={session.id}
+              >
                 {session.id}
               </span>
             </div>
@@ -73,7 +85,6 @@ export default function SuccessClient({ session }) {
             Return to Home
           </Link>
         </div>
-        
       </div>
     </div>
   );

@@ -11,10 +11,8 @@ export async function POST(req) {
 
     // access hidden form data
     const formData = await req.formData();
-    const pricingData = formData.get("pricing-id");
-    console.log(pricingData);
-    const pricingId = priceList[pricingData];
-    console.log(pricingId);
+    const planId = formData.get("pricing-id");
+    const pricingId = priceList[planId];
 
     // Create Checkout Sessions from body params.
     const session = await stripe.checkout.sessions.create({
@@ -27,6 +25,7 @@ export async function POST(req) {
         },
       ],
       mode: "subscription",
+      metadata: {planId},
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
     });
     return NextResponse.redirect(session.url, 303);

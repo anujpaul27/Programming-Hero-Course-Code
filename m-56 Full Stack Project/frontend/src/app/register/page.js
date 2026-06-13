@@ -1,17 +1,19 @@
 "use client";
 import React, { useState } from "react";
-import {Select, Input, Label, ListBox, Spinner } from "@heroui/react";
+import { Select, Input, Label, ListBox, Spinner } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { authClient } from "../lib/auth-client";
 import { useRouter, useSearchParams } from "next/navigation";
+import { AlertCircle } from "lucide-react";
 
 export default function DynamicTypes() {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [err, setError] = useState("");
 
-  const searchParams = useSearchParams()
-  const redirectTo = searchParams.get('redirect')
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ export default function DynamicTypes() {
     const formData = new FormData(e.target);
     const obj = Object.fromEntries(formData.entries());
     obj.set = true;
+    const memberStatus = "free";
     // Registration user with betterAuth
     const { data, error } = await authClient.signUp.email({
       email: obj.email,
@@ -26,11 +29,12 @@ export default function DynamicTypes() {
       name: obj.name,
       role: obj.role,
       set: obj.set,
+      memberStatus,
       callbackURL: redirectTo,
     });
 
     if (error) {
-      console.log(error.message);
+      setError(error.message);
     } else {
       router.push(redirectTo);
     }
@@ -123,6 +127,20 @@ export default function DynamicTypes() {
                 Next Step
               </button>
             </motion.div>
+            {/* Error Alert Display */}
+            <AnimatePresence mode="wait">
+              {err && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, height: "auto", scale: 1 }}
+                  exit={{ opacity: 0, height: 0, scale: 0.95 }}
+                  className="mb-4 mt-5  p-3 bg-danger-500/10 border border-red-500 text-red-400 rounded-xl flex items-center gap-2 text-sm overflow-hidden"
+                >
+                  <AlertCircle size={18} className="shrink-0" />
+                  <span>{err}</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Step 2 Container */}
@@ -145,17 +163,23 @@ export default function DynamicTypes() {
                   placeholder="••••••••"
                   type="password"
                   required={step === 2}
-                  className={'rounded-2xl'}
+                  className={"rounded-2xl"}
                 />
               </div>
 
-              <Select name="role" className="w-full  text-white " placeholder="Select one">
+              <Select
+                name="role"
+                className="w-full  text-white "
+                placeholder="Select one"
+              >
                 <Label>Role</Label>
-                <Select.Trigger className={'bg-gray-700 text-gray-300'} >
+                <Select.Trigger className={"bg-gray-700 text-gray-300"}>
                   <Select.Value />
                   <Select.Indicator />
                 </Select.Trigger>
-                <Select.Popover className={'bg-gray-700 text-white hover:bg-gray-800 '} >
+                <Select.Popover
+                  className={"bg-gray-700 text-white hover:bg-gray-800 "}
+                >
                   <ListBox>
                     <ListBox.Item id="seeker" textValue="Seeker">
                       Seeker

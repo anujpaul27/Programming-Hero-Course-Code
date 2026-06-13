@@ -12,11 +12,10 @@ export default function LoginForm() {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [err, setError] = useState("");
 
   const searchParams = useSearchParams()
   const redirectTo = searchParams.get('redirect')
-  console.log(redirectTo);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -28,10 +27,8 @@ export default function LoginForm() {
     const formData = new FormData(e.currentTarget);
     const { email, password } = Object.fromEntries(formData.entries());
 
-    console.log(email, password);
-
     // Better-Auth Sign-In call
-    await authClient.signIn.email({
+    const {data,error} = await authClient.signIn.email({
       email,
       password,
       callbackURL: redirectTo || '/',
@@ -47,6 +44,17 @@ export default function LoginForm() {
         setError(ctx.error.message || "Invalid email or password.");
       },
     });
+
+    if (error)
+    {
+      setIsLoading(false);
+      setError(error.message || "Invalid email or password.");
+      console.log(error);
+    }
+    else 
+    {
+      console.log(data)
+    }
   };
 
   // Framer motion variants for fine-tuned orchestration
@@ -93,7 +101,7 @@ export default function LoginForm() {
 
         {/* Error Alert Display */}
         <AnimatePresence mode="wait">
-          {error && (
+          {err && (
             <motion.div
               initial={{ opacity: 0, height: 0, scale: 0.95 }}
               animate={{ opacity: 1, height: "auto", scale: 1 }}
@@ -101,7 +109,7 @@ export default function LoginForm() {
               className="mb-4 p-3 bg-danger-500/10 border border-danger-500/30 text-danger-400 rounded-xl flex items-center gap-2 text-sm overflow-hidden"
             >
               <AlertCircle size={18} className="shrink-0" />
-              <span>{error}</span>
+              <span>{err}</span>
             </motion.div>
           )}
         </AnimatePresence>
