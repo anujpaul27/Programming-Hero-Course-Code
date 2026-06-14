@@ -7,7 +7,8 @@ import {
   Home, Briefcase, Heart, FileText, CreditCard, Settings, 
   LogOut, User, 
   Users,
-  ChartBar
+  ChartBar,
+  Building2
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { authClient } from "../lib/auth-client";
@@ -29,11 +30,14 @@ const adminNavItems = [
   { href: "/dashboard/admin/analytics", label: "Analytics", icon: ChartBar },
   { href: "/dashboard/admin/settings", label: "Settings", icon: Settings },
 ];
-let navItems = []
-const user= {}
-user.role = 'admin'
-if (user?.role === 'seeker') navItems = seekerNavItems
-else if (user?.role === 'admin') navItems = adminNavItems 
+
+const recruiterNavItems = [
+  { href: "/dashboard/recruiter", label: "Home", icon: Home },
+  { href: "/dashboard/recruiter/company", label: "My Company", icon: Building2 },
+  { href: "/dashboard/recruiter/jobs", label: "Manage Jobs", icon: Briefcase },
+  { href: "/dashboard/recruiter/billing", label: "Billing", icon: CreditCard },
+  { href: "/dashboard/recruiter/settings", label: "Settings", icon: Settings },
+];
 
 export default function SeekerLayout({ children }) {
   const pathname = usePathname();
@@ -50,7 +54,9 @@ export default function SeekerLayout({ children }) {
     ? adminNavItems 
     : role === "seeker" 
       ? seekerNavItems 
-      : [];
+      : role === 'recruiter' ?
+       recruiterNavItems
+       : [];
 
   if (isPending) return <div>Loading...</div>;
   if (!session) return <div>Redirecting to login...</div>;
