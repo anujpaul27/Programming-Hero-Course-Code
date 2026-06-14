@@ -5,9 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
   Home, Briefcase, Heart, FileText, CreditCard, Settings, 
-  LogOut, User 
+  LogOut, User, 
+  Users,
+  ChartBar
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { getUserClient } from "@/Components/share/getUserClient";
+import { authClient } from "../lib/auth-client";
 
 const seekerNavItems = [
   { href: "/dashboard/seeker", label: "Home", icon: Home },
@@ -26,10 +30,31 @@ const adminNavItems = [
   { href: "/dashboard/admin/analytics", label: "Analytics", icon: ChartBar },
   { href: "/dashboard/admin/settings", label: "Settings", icon: Settings },
 ];
+let navItems = []
+const user= {}
+user.role = 'admin'
+if (user?.role === 'seeker') navItems = seekerNavItems
+else if (user?.role === 'admin') navItems = adminNavItems 
 
 export default function SeekerLayout({ children }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  // 1. Fetch session from Better Auth
+  const { data: session, isPending } = authClient.useSession();
+  
+  // 2. Determine role dynamically
+  const role = session?.user?.role; // Ensure 'role' is in your user schema
+
+  // 3. Select items based on role (default to empty or a loader)
+  const navItems = role === "admin" 
+    ? adminNavItems 
+    : role === "seeker" 
+      ? seekerNavItems 
+      : [];
+
+  if (isPending) return <div>Loading...</div>;
+  if (!session) return <div>Redirecting to login...</div>;
 
   return (
     <div className="min-h-screen bg-base-200 flex">

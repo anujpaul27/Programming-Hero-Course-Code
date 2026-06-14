@@ -27,7 +27,7 @@ export default function BrowseJobs() {
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-bold">Browse Jobs</h1>
+        <h1 className="text-2xl font-bold">Browse Jobs</h1>
         <div className="relative w-96">
           <Search className="absolute left-4 top-3 text-base-content/50" />
           <input
@@ -54,17 +54,17 @@ export default function BrowseJobs() {
               </div>
               <p className="text-base-content/70">{job.company}</p>
 
-              <div className="flex gap-4 text-sm mt-4">
+              <div className="flex gap-4 text-xs mt-4">
                 <div className="flex items-center gap-1"><MapPin size={16} /> {job.location}</div>
                 <div className="flex items-center gap-1"><Briefcase size={16} /> {job.type}</div>
                 <div className="flex items-center gap-1"><DollarSign size={16} /> {job.salary}</div>
               </div>
 
-              <div className="card-actions mt-6">
-                <button onClick={() => handleApply(job)} className="btn btn-primary flex-1">
+              <div className="card-actions mt-6 gap-2 ">
+                <button onClick={() => handleApply(job)} className="btn btn-primary btn-xs flex-1">
                   Apply Now
                 </button>
-                <button className="btn btn-outline flex-1">Save</button>
+                <button className="btn btn-outline btn-xs flex-1">Save</button>
               </div>
             </div>
           </motion.div>

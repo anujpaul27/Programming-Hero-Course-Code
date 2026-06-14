@@ -27,7 +27,7 @@ export default function SeekerHome() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-4xl font-bold">Good morning, Alex 👋</h1>
+        <h1 className="text-2xl font-bold">Good morning, Alex 👋</h1>
         <p className="text-base-content/70 mt-2">
           Here what happening with your job search
         </p>
@@ -45,8 +45,8 @@ export default function SeekerHome() {
           >
             <div className="card-body">
               <div className="flex justify-between items-start">
-                <stat.icon className={`w-10 h-10 text-${stat.color}`} />
-                <span className="text-4xl font-bold">{stat.value}</span>
+                <stat.icon className={`w-5 h-5 text-${stat.color}`} />
+                <span className="text-2xl font-bold">{stat.value}</span>
               </div>
               <p className="text-base-content/70 mt-4">{stat.label}</p>
             </div>
@@ -54,16 +54,16 @@ export default function SeekerHome() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className=" w-full  grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Profile Card */}
         <div className="card bg-base-100 shadow-xl lg:col-span-1">
           <div className="card-body items-center text-center">
             <div className="avatar mb-4">
-              <div className="w-28 h-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <div className="w-20 h-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img src="https://i.pravatar.cc/300?u=seeker" alt="Profile" />
               </div>
             </div>
-            <h2 className="text-2xl font-bold">Alex Rahman</h2>
+            <h2 className="text-xl font-bold">Alex Rahman</h2>
             <p className="text-base-content/60">Full Stack Developer</p>
             <button className="btn btn-outline btn-sm mt-6">
               Edit Profile
@@ -74,7 +74,7 @@ export default function SeekerHome() {
         {/* Application Status Chart */}
         <div className="card bg-base-100 shadow-xl lg:col-span-2">
           <div className="card-body">
-            <h3 className="font-semibold text-lg flex items-center gap-2">
+            <h3 className="font-semibold text-md flex items-center gap-2">
               <TrendingUp /> Application Status
             </h3>
             <div className="h-80">

@@ -2,66 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { BriefcaseIcon, MapPinIcon, ClockIcon, DollarSignIcon } from "lucide-react";
+import Link from 'next/link';
 
-export default function RecentJobs({jobsData}) {
+export default function RecentJobs({jobsData,err}) {
   const [jobs, setJobs] = useState(jobsData);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(err);
 
-  // useEffect(() => {
-  //   const fetchJobs = async () => {
-  //     try {
-  //       setLoading(true);
-  //       const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/job/all`);
-        
-  //       if (!res.ok) throw new Error('Failed to load jobs');
-        
-  //       const payload = await res.json();
-  //       const data = payload?.jobPosts;
-  //       setJobs(data.slice(0, 5)); // Show only latest 5 jobs on dashboard
-  //     } catch (err) {
-  //       console.error(err);
-  //       setError("Failed to load recent jobs");
-        
-  //       // Mock data as fallback
-  //       const mockJobs = [
-  //         {
-  //           id: 1,
-  //           title: "Senior Frontend Developer",
-  //           company: "LinkUp Inc.",
-  //           location: "New York • Remote",
-  //           type: "Full-time",
-  //           salary: "120k - 160k",
-  //           posted: "2d ago"
-  //         },
-  //         {
-  //           id: 2,
-  //           title: "Backend Engineer",
-  //           company: "TechFlow",
-  //           location: "San Francisco, CA",
-  //           type: "Full-time",
-  //           salary: "130k - 170k",
-  //           posted: "3d ago"
-  //         },
-  //         {
-  //           id: 3,
-  //           title: "Product Designer",
-  //           company: "PixelCraft",
-  //           location: "Remote",
-  //           type: "Full-time",
-  //           salary: "90k - 125k",
-  //           posted: "1w ago"
-  //         }
-  //       ];
-  //       setJobs(mockJobs);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchJobs();
-  // }, []);
-
+  
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
       <div className="flex items-center justify-between mb-6">
@@ -69,16 +16,12 @@ export default function RecentJobs({jobsData}) {
           <BriefcaseIcon className="w-5 h-5 text-blue-400" />
           Recent Job Postings
         </h2>
-        <a href="/jobs" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+        <Link href="/jobs" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
           View All →
-        </a>
+        </Link>
       </div>
 
-      {loading ? (
-        <div className="py-12 flex justify-center">
-          <div className="animate-spin w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full"></div>
-        </div>
-      ) : error ? (
+      { error ? (
         <div className="text-red-400 text-center py-8">{error}</div>
       ) : (
         <div className="overflow-x-auto">

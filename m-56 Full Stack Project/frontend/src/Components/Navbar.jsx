@@ -5,6 +5,7 @@ import { Zap, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/app/lib/auth-client";
+import { getUserClient } from "./share/getUserClient";
 
 const navLinks = [
   { label: "Find Jobs", href: "/jobs" },
@@ -17,6 +18,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);  
   const { data: session, isPending, error } = authClient.useSession()
 
+  const user = getUserClient()
 
   return (
     <motion.header
