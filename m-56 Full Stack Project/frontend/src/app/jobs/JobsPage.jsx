@@ -140,9 +140,9 @@ export default function JobsPage({allJobs,err}) {
                         >
                           View Details
                         </Link>
-                        <button className="flex-1 btn btn-sm text-xs bg-blue-600 hover:bg-blue-700 text-white">
+                        <Link href={`/jobs/${job._id}/apply`} className="flex-1 btn btn-sm text-xs bg-blue-600 hover:bg-blue-700 text-white">
                           Apply Now
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </motion.div>

@@ -1,5 +1,6 @@
 // Make sure this exists with your Tailwind + DaisyUI setup
 
+import { RoleCheck } from "@/Components/share/getUser";
 import {
   BriefcaseIcon,
   ChartBarIcon,
@@ -12,6 +13,8 @@ import {
 import Link from "next/link";
 
 export default function RootLayout({ children }) {
+
+  // RoleCheck('admin')
   return (
     <html lang="en" className="dark">
       <body className="bg-zinc-950 text-white min-h-screen">

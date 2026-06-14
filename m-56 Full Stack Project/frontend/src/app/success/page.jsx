@@ -2,6 +2,8 @@
 import { redirect } from "next/navigation";
 import { priceList, stripe } from "../lib/stripe";
 import SuccessClient from "./SuccessClient";
+import { auth } from "../lib/auth";
+import { headers } from "next/headers";
 
 export default async function Success({ searchParams }) {
   const { session_id } = await searchParams;
@@ -23,6 +25,15 @@ export default async function Success({ searchParams }) {
       email: session?.customer_details.email,
       pricingId: session?.metadata.planId
     };
+
+    // TODO: save to the DB who can parchase premium 
+
+    await auth.api.updateUser({
+      body: {
+        memberStatus: session?.metadata.planId,
+      },
+      headers: await headers()
+    })    
     
   }
 

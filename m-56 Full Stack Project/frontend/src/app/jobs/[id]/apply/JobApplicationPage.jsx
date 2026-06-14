@@ -2,9 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BriefcaseIcon, UploadIcon, LinkIcon, UserIcon } from "lucide-react";
+import { BriefcaseIcon, UploadIcon, LinkIcon, UserIcon, BarChart3 } from "lucide-react";
 
-export default function JobApplicationPage({ id, count }) {
+export default function JobApplicationPage({ id, userId, count, memberStatus }) {
+  console.log(count);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -17,7 +19,26 @@ export default function JobApplicationPage({ id, count }) {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [isCount, setIsCount] = useState(false);
+
+  // Determine max applications based on membership
+  const getMaxApplications = () => {
+    switch (memberStatus?.toLowerCase()) {
+      case "starter-seeker":
+        return 10;
+      case "premium-seeker":
+        return 15;
+      case "recruiter-starter":
+        return 10
+      case "recruiter-enterprise":
+        return 15
+      case "free":
+      default:
+        return 3;
+    }
+  };
+
+  const maxApplications = getMaxApplications();
+  const isLimitReached = count >= maxApplications;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,13 +64,14 @@ export default function JobApplicationPage({ id, count }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
+    if (isLimitReached) return;
 
     setIsSubmitting(true);
 
     const payload = {
       ...formData,
       jobId: id,
-      appliedAt: new Date().toISOString(),
+      userId,
     };
 
     try {
@@ -81,169 +103,242 @@ export default function JobApplicationPage({ id, count }) {
     }
   };
 
+  // Progress percentage
+  const progressPercentage = maxApplications > 0 
+  ? Math.min((count / maxApplications) * 100, 100) 
+  : 0
+
   return (
     <div className="min-h-screen bg-zinc-950 p-6 lg:p-10">
-      <div className="max-w-2xl mx-auto ">
+      <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8 text-center   "
+          className="mb-8"
         >
-          <h1 className="text-2xl font-bold text-center text-white flex items-center gap-3">
-            <BriefcaseIcon className="w-5 h-5 text-blue-400" />
+          <h1 className="text-2xl font-bold text-center text-white flex items-center justify-center gap-3 mb-6">
+            <BriefcaseIcon className="w-6 h-6 text-blue-400" />
             Apply for Position
           </h1>
-            <motion.p className=" text-center">
-                First three application is free. {count}/3
-              </motion.p>
+
+          {/* Progress Bar */}
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 mb-8">
+            <div className="flex items-center justify-between text-sm mb-3">
+              <div className="flex items-center gap-2 text-zinc-400">
+                <BarChart3 className="w-4 h-4" />
+                Applications Used
+              </div>
+              <div className="font-medium text-white">
+                {count} / {maxApplications}
+              </div>
+            </div>
+
+            <div className="h-2 bg-white rounded-full overflow-hidden">
+              <motion.div
+                className="h-full  from-blue-500 to-purple-500 rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: `${progressPercentage}%` }}
+                transition={{ duration: 0.6 }}
+              />
+            </div>
+
+            <p className="text-center text-xs text-zinc-500 mt-3">
+              {memberStatus === "free" && "Free Plan"}
+              {memberStatus === "starter-seeker" && "Starter Seeker Plan"}
+              {memberStatus === "premium-seeker" && "Premium Seeker Plan"}
+            </p>
+          </div>
         </motion.div>
 
         <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 lg:p-10">
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Personal Info */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-2">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  className={`w-full px-5 py-3 bg-zinc-800 border rounded-2xl text-white ${errors.fullName ? "border-red-500" : "border-zinc-700 focus:border-blue-500"}`}
-                  placeholder="John Doe"
-                />
-                <AnimatePresence>
-                  {errors.fullName && (
-                    <motion.p className="text-red-400 text-sm mt-1">
-                      {errors.fullName}
-                    </motion.p>
+          <AnimatePresence mode="wait">
+            {isLimitReached ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center py-16"
+              >
+                <div className="mx-auto w-20 h-20 bg-zinc-800 rounded-full flex items-center justify-center mb-6">
+                  <UserIcon className="w-10 h-10 text-zinc-400" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Application Limit Reached
+                </h3>
+                <p className="text-zinc-400 max-w-sm mx-auto">
+                  You have used all your available applications for the{" "}
+                  <span className="text-blue-400 font-medium">
+                    {memberStatus === "free"
+                      ? "Free"
+                      : memberStatus === "starter-seeker"
+                      ? "Starter Seeker"
+                      : "Premium Seeker"}{" "}
+                  </span>
+                  plan.
+                </p>
+                <p className="text-sm text-zinc-500 mt-4">
+                  Upgrade your plan to apply for more jobs.
+                </p>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* Personal Info */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-zinc-300 mb-2">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      className={`w-full px-5 py-3 bg-zinc-800 border rounded-2xl text-white ${
+                        errors.fullName
+                          ? "border-red-500"
+                          : "border-zinc-700 focus:border-blue-500"
+                      }`}
+                      placeholder="John Doe"
+                    />
+                    <AnimatePresence>
+                      {errors.fullName && (
+                        <motion.p className="text-red-400 text-sm mt-1">
+                          {errors.fullName}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-zinc-300 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={`w-full px-5 py-3 bg-zinc-800 border rounded-2xl text-white ${
+                        errors.email
+                          ? "border-red-500"
+                          : "border-zinc-700 focus:border-blue-500"
+                      }`}
+                      placeholder="you@example.com"
+                    />
+                    <AnimatePresence>
+                      {errors.email && (
+                        <motion.p className="text-red-400 text-sm mt-1">
+                          {errors.email}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-zinc-300 mb-2">
+                    Phone Number (Optional)
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-5 py-3 bg-zinc-800 border border-zinc-700 rounded-2xl text-white focus:border-blue-500"
+                    placeholder="+1 (555) 123-4567"
+                  />
+                </div>
+
+                {/* Resume Link */}
+                <div>
+                  <label className="block text-sm font-medium text-zinc-300 mb-2">
+                    Resume Link <span className="text-red-400">*</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="url"
+                      name="resumeLink"
+                      value={formData.resumeLink}
+                      onChange={handleChange}
+                      className={`w-full px-5 py-3 bg-zinc-800 border rounded-2xl text-white ${
+                        errors.resumeLink
+                          ? "border-red-500"
+                          : "border-zinc-700 focus:border-blue-500"
+                      }`}
+                      placeholder="https://drive.google.com/your-resume.pdf"
+                    />
+                    <LinkIcon
+                      className="absolute right-4 top-4 text-zinc-500"
+                      size={20}
+                    />
+                  </div>
+                  <AnimatePresence>
+                    {errors.resumeLink && (
+                      <motion.p className="text-red-400 text-sm mt-1">
+                        {errors.resumeLink}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                  <p className="text-xs text-zinc-500 mt-1">
+                    Link to Google Drive, Dropbox, or any public URL
+                  </p>
+                </div>
+
+                {/* Portfolio Link */}
+                <div>
+                  <label className="block text-sm font-medium text-zinc-300 mb-2">
+                    Portfolio / GitHub Link (Optional)
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="url"
+                      name="portfolioLink"
+                      value={formData.portfolioLink}
+                      onChange={handleChange}
+                      className="w-full px-5 py-3 bg-zinc-800 border border-zinc-700 rounded-2xl text-white focus:border-blue-500"
+                      placeholder="https://yourportfolio.com or https://github.com/username"
+                    />
+                    <LinkIcon
+                      className="absolute right-4 top-4 text-zinc-500"
+                      size={20}
+                    />
+                  </div>
+                </div>
+
+                {/* Cover Letter */}
+                <div>
+                  <label className="block text-sm font-medium text-zinc-300 mb-2">
+                    Cover Letter / Message (Optional)
+                  </label>
+                  <textarea
+                    name="coverLetter"
+                    value={formData.coverLetter}
+                    onChange={handleChange}
+                    rows={6}
+                    className="w-full px-5 py-4 bg-zinc-800 border border-zinc-700 rounded-3xl text-white focus:border-blue-500 resize-y"
+                    placeholder="Why are you a good fit for this role?"
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-5 btn btn-primary  from-blue-600 to-purple-600 text-white font-semibold rounded-2xl text-lg shadow-xl disabled:opacity-70 flex items-center justify-center gap-3"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 py-5 btn btn-primary h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Submitting Application...
+                    </>
+                  ) : (
+                    `Submit Application (${count + 1}/${maxApplications})`
                   )}
-                </AnimatePresence>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={`w-full px-5 py-3 bg-zinc-800 border rounded-2xl text-white ${errors.email ? "border-red-500" : "border-zinc-700 focus:border-blue-500"}`}
-                  placeholder="you@example.com"
-                />
-                <AnimatePresence>
-                  {errors.email && (
-                    <motion.p className="text-red-400 text-sm mt-1">
-                      {errors.email}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-zinc-300 mb-2">
-                Phone Number (Optional)
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full px-5 py-3 bg-zinc-800 border border-zinc-700 rounded-2xl text-white focus:border-blue-500"
-                placeholder="+1 (555) 123-4567"
-              />
-            </div>
-
-            {/* Resume Link */}
-            <div>
-              <label className="block text-sm font-medium text-zinc-300 mb-2">
-                Resume Link <span className="text-red-400">*</span>
-              </label>
-              <div className="relative">
-                <input
-                  type="url"
-                  name="resumeLink"
-                  value={formData.resumeLink}
-                  onChange={handleChange}
-                  className={`w-full px-5 py-3 bg-zinc-800 border rounded-2xl text-white ${errors.resumeLink ? "border-red-500" : "border-zinc-700 focus:border-blue-500"}`}
-                  placeholder="https://drive.google.com/your-resume.pdf"
-                />
-                <LinkIcon
-                  className="absolute right-4 top-4 text-zinc-500"
-                  size={20}
-                />
-              </div>
-              <AnimatePresence>
-                {errors.resumeLink && (
-                  <motion.p className="text-red-400 text-sm mt-1">
-                    {errors.resumeLink}
-                  </motion.p>
-                )}
-              </AnimatePresence>
-              <p className="text-xs text-zinc-500 mt-1">
-                Link to Google Drive, Dropbox, or any public URL
-              </p>
-            </div>
-
-            {/* Portfolio Link */}
-            <div>
-              <label className="block text-sm font-medium text-zinc-300 mb-2">
-                Portfolio / GitHub Link (Optional)
-              </label>
-              <div className="relative">
-                <input
-                  type="url"
-                  name="portfolioLink"
-                  value={formData.portfolioLink}
-                  onChange={handleChange}
-                  className="w-full px-5 py-3 bg-zinc-800 border border-zinc-700 rounded-2xl text-white focus:border-blue-500"
-                  placeholder="https://yourportfolio.com or https://github.com/username"
-                />
-                <LinkIcon
-                  className="absolute right-4 top-4 text-zinc-500"
-                  size={20}
-                />
-              </div>
-            </div>
-
-            {/* Cover Letter */}
-            <div>
-              <label className="block text-sm font-medium text-zinc-300 mb-2">
-                Cover Letter / Message (Optional)
-              </label>
-              <textarea
-                name="coverLetter"
-                value={formData.coverLetter}
-                onChange={handleChange}
-                rows={6}
-                className="w-full px-5 py-4 bg-zinc-800 border border-zinc-700 rounded-3xl text-white focus:border-blue-500 resize-y"
-                placeholder="Why are you a good fit for this role?"
-              />
-            </div>
-
-            {/* Submit Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              disabled={isSubmitting || count >= 3}
-              className="w-full py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl text-lg shadow-xl disabled:opacity-70 flex items-center justify-center gap-3"
-            >
-              {isSubmitting ? (
-                <>
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  Submitting Application...
-                </>
-              ) : (
-                "Submit Application"
-              )}
-            </motion.button>
-          </form>
+                </motion.button>
+              </form>
+            )}
+          </AnimatePresence>
 
           <AnimatePresence>
             {success && (
@@ -262,7 +357,6 @@ export default function JobApplicationPage({ id, count }) {
                 {errors.submit}
               </motion.p>
             )}
-              
           </AnimatePresence>
         </div>
       </div>

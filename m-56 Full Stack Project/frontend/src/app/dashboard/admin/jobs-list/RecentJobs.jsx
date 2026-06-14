@@ -3,64 +3,64 @@
 import React, { useState, useEffect } from 'react';
 import { BriefcaseIcon, MapPinIcon, ClockIcon, DollarSignIcon } from "lucide-react";
 
-export default function RecentJobs() {
-  const [jobs, setJobs] = useState([]);
+export default function RecentJobs({jobsData}) {
+  const [jobs, setJobs] = useState(jobsData);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/job/all`);
+  // useEffect(() => {
+  //   const fetchJobs = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/job/all`);
         
-        if (!res.ok) throw new Error('Failed to load jobs');
+  //       if (!res.ok) throw new Error('Failed to load jobs');
         
-        const payload = await res.json();
-        const data = payload.jobPosts;
-        setJobs(data.slice(0, 5)); // Show only latest 5 jobs on dashboard
-      } catch (err) {
-        console.error(err);
-        setError("Failed to load recent jobs");
+  //       const payload = await res.json();
+  //       const data = payload?.jobPosts;
+  //       setJobs(data.slice(0, 5)); // Show only latest 5 jobs on dashboard
+  //     } catch (err) {
+  //       console.error(err);
+  //       setError("Failed to load recent jobs");
         
-        // Mock data as fallback
-        const mockJobs = [
-          {
-            id: 1,
-            title: "Senior Frontend Developer",
-            company: "LinkUp Inc.",
-            location: "New York • Remote",
-            type: "Full-time",
-            salary: "120k - 160k",
-            posted: "2d ago"
-          },
-          {
-            id: 2,
-            title: "Backend Engineer",
-            company: "TechFlow",
-            location: "San Francisco, CA",
-            type: "Full-time",
-            salary: "130k - 170k",
-            posted: "3d ago"
-          },
-          {
-            id: 3,
-            title: "Product Designer",
-            company: "PixelCraft",
-            location: "Remote",
-            type: "Full-time",
-            salary: "90k - 125k",
-            posted: "1w ago"
-          }
-        ];
-        setJobs(mockJobs);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       // Mock data as fallback
+  //       const mockJobs = [
+  //         {
+  //           id: 1,
+  //           title: "Senior Frontend Developer",
+  //           company: "LinkUp Inc.",
+  //           location: "New York • Remote",
+  //           type: "Full-time",
+  //           salary: "120k - 160k",
+  //           posted: "2d ago"
+  //         },
+  //         {
+  //           id: 2,
+  //           title: "Backend Engineer",
+  //           company: "TechFlow",
+  //           location: "San Francisco, CA",
+  //           type: "Full-time",
+  //           salary: "130k - 170k",
+  //           posted: "3d ago"
+  //         },
+  //         {
+  //           id: 3,
+  //           title: "Product Designer",
+  //           company: "PixelCraft",
+  //           location: "Remote",
+  //           type: "Full-time",
+  //           salary: "90k - 125k",
+  //           posted: "1w ago"
+  //         }
+  //       ];
+  //       setJobs(mockJobs);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchJobs();
-  }, []);
+  //   fetchJobs();
+  // }, []);
 
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">

@@ -2,8 +2,8 @@ import JobsPage from './JobsPage';
 
 const jobsPageServer =async () => {
 
-  let allJobs = null;
-  let error = null;
+  let allJobs = [];
+  let error = '';
   try
   {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/job/all`)
@@ -17,7 +17,6 @@ const jobsPageServer =async () => {
   }
   catch (err)
   {
-    console.error(err.message)
     error = err.message
   }
 
