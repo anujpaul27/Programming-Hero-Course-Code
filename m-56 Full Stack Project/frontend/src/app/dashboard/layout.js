@@ -10,7 +10,6 @@ import {
   ChartBar
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { getUserClient } from "@/Components/share/getUserClient";
 import { authClient } from "../lib/auth-client";
 
 const seekerNavItems = [
