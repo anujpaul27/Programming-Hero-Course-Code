@@ -58,8 +58,8 @@ export default function SeekerLayout({ children }) {
        recruiterNavItems
        : [];
 
-  if (isPending) return <div>Loading...</div>;
-  if (!session) return <div>Redirecting to login...</div>;
+  
+  
 
   return (
     <div className="min-h-screen bg-base-200 flex">
@@ -73,6 +73,7 @@ export default function SeekerLayout({ children }) {
         </div>
 
         <nav className="p-4">
+          {(isPending) && <div>Loading...</div>}
           {navItems.map((item) => {
             const isActive = pathname === item.href; 
             return (

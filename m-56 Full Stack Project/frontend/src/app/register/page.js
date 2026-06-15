@@ -185,8 +185,8 @@ export default function DynamicTypes() {
                       Seeker
                       <ListBox.ItemIndicator />
                     </ListBox.Item>
-                    <ListBox.Item id="recruter" textValue="Recruter">
-                      Recruter
+                    <ListBox.Item id="recruiter" textValue="Recruiter">
+                      Recruiter
                       <ListBox.ItemIndicator />
                     </ListBox.Item>
                     <ListBox.Item id="admin" textValue="Admin">
