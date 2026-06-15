@@ -1,5 +1,6 @@
 const express = require('express');
 const { createJobPost, getAllJobPosts, getJobDetailsWithSpecificId } = require('../controllers/jobpost.controllers');
+const jobApply = require('../controllers/apply.controller');
 const router = express.Router();
 
 /**
@@ -22,6 +23,21 @@ router.get('/all', getAllJobPosts);
  * @access  Private
  */
 router.get('/:id', getJobDetailsWithSpecificId)
+
+/**
+ * @route   POST /api/job/apply
+ * @desc    post the applicant
+ * @access  Private
+ */
+router.post('/apply/create', jobApply.jobApply)
+
+/**
+ * @route   POST /api/job/apply/count
+ * @desc    Count length of free job application
+ * @access  Private
+ */
+router.get('/apply/count/:id', jobApply.jobLengthCheck)
+
 
 
 module.exports = router;

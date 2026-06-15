@@ -10,7 +10,7 @@ const applySchema = new mongoose.Schema({
     phone: {
         type:String
     },
-    resumeLink: {
+    resumeLink: {   
         type:String
     },
     portfolioLink: {
@@ -19,6 +19,12 @@ const applySchema = new mongoose.Schema({
     coverLetter: {
         type:String
     },
+    jobId: {
+        type:String
+    },
+    userId: {
+        type:String
+    }
     
 })
 
