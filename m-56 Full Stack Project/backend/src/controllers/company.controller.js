@@ -5,7 +5,7 @@ const companyModel = require("../models/company.model");
 // @route   POST /api/company/create
 const createCompany = async (req, res) => {
   try {
-    const { name, industry, location, employees, website, logo, description } = req.body;
+    const { name,recruiterId, industry, location, employees, website, logo, description } = req.body;
 
     if (!name || !industry || !location || !description) {
       return res.status(400).json({ message: "Please enter required field!." });
@@ -13,6 +13,7 @@ const createCompany = async (req, res) => {
 
     const newCompany = await companyModel.create({
       name,
+      recruiterId,
       industry,
       location,
       employees,
@@ -28,7 +29,32 @@ const createCompany = async (req, res) => {
   }
 };
 
+// @desc    get the company with recruiter ID 
+// @route   GET /api/company/id
+
+const getCompanyWithRecruiterId = async (req,res) =>
+{
+  try
+  {
+    const id = req.params.id;
+    const cmp = await companyModel.find({recruiterId:id})
+
+    res.status(201).json({
+      data: cmp
+    })
+  }
+  catch(err)  
+  {
+    res.status(404).json({
+      message: err.message
+    })
+  }
+    
+}
+
+
 
 module.exports = {
-    createCompany
+    createCompany,
+    getCompanyWithRecruiterId
 }

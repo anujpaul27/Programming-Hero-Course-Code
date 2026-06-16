@@ -9,6 +9,12 @@ const companyController = require('../controllers/company.controller')
  */
 router.post('/create', companyController.createCompany)
 
+/**
+ * @route   POST api/company/recruiterId
+ * @desc    Create company 
+ */
+router.get('/:id', companyController.getCompanyWithRecruiterId)
+
 
 
 module.exports = router

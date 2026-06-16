@@ -1,6 +1,7 @@
 const express = require('express');
 const { createJobPost, getAllJobPosts, getJobDetailsWithSpecificId } = require('../controllers/jobpost.controllers');
 const jobApply = require('../controllers/apply.controller');
+const verifyToken = require('../middleware/auth.middlware');
 const router = express.Router();
 
 /**
@@ -15,7 +16,7 @@ router.post('/create', createJobPost);
  * @desc    Get all job posts
  * @access  Private
  */
-router.get('/all', getAllJobPosts);
+router.get('/all', verifyToken, getAllJobPosts);
 
 /**
  * @route   GET /api/job/:id
