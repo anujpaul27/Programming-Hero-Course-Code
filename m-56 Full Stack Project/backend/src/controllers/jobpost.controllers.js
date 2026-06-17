@@ -55,7 +55,6 @@ async function getAllJobPosts (req,res)
 async function getJobDetailsWithSpecificId (req,res)
 {
     const jobId = req.params.id;
-
     try 
     {
         const job = await jobPostModel.findById(jobId)

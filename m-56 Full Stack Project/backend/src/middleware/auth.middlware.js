@@ -1,5 +1,6 @@
-const mongoose = require('mongoose')
-async function verifyToken   (req,res,next) 
+import mongoose from 'mongoose';
+
+export const  verifyToken = async   (req,res,next) =>
 {
     try
     {
@@ -21,7 +22,6 @@ async function verifyToken   (req,res,next)
         const userInfo = await userModel.findOne({_id: userId})
         
         req.user = userInfo
-        
         next()
     }
     catch (error)
@@ -32,6 +32,14 @@ async function verifyToken   (req,res,next)
     }
 }
 
+export const  verifySeeker =async  ( req,res,next) =>
+{
+    if (!req.user?.role === 'seeker')
+    {
+        return res.status(403).json({
+            message: 'forbidden user'
+        })
+    }
+    next()
+}
 
-
-module.exports = verifyToken

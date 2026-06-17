@@ -1,7 +1,7 @@
 const express = require('express');
 const { createJobPost, getAllJobPosts, getJobDetailsWithSpecificId } = require('../controllers/jobpost.controllers');
 const jobApply = require('../controllers/apply.controller');
-const verifyToken = require('../middleware/auth.middlware');
+const { verifyToken, verifySeeker } = require('../middleware/auth.middlware');
 const router = express.Router();
 
 /**
