@@ -24,4 +24,24 @@ export const RoleCheck = (role) =>
     }
 }
 
+export const getUserToken =async ()=>
+{
+    const session = await auth.api.getSession({
+        headers: await headers() 
+    })
+    return session?.session?.token || null
+}
+
+export const sendToken = async () =>
+{
+    const userToken = await getUserToken()
+
+    if (userToken === null)
+    {
+        return null
+    }
+
+    return {authorization: `Bearer ${userToken}`}
+}
+
 

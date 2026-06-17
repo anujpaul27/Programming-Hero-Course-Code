@@ -24,6 +24,7 @@ const seekerNavItems = [
 
 const adminNavItems = [
   { href: "/dashboard/admin", label: "Dashboard", icon: Home },
+  { href: "/dashboard/admin/company-request", label: "Company Request", icon: Home },
   { href: "/dashboard/admin/jobs-list", label: "Jobs", icon: Briefcase },
   { href: "/dashboard/admin/job-post", label: "Post a Job", icon: Briefcase },
   { href: "/dashboard/admin/users", label: "Users", icon: Users },

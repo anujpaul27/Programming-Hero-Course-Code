@@ -9,36 +9,55 @@ import {
   DollarSignIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-export default function JobsPage({allJobs,err}) {
+export default function JobsPage({allJobs,err,filter}) {
   const [jobs, setJobs] = useState(allJobs);
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterType, setFilterType] = useState("All");
+  const [searchTerm, setSearchTerm] = useState(filter.search || "")
+  const [filterType, setFilterType] = useState(filter.jobtype || "All");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(err);
 
 
   // Filter & Search
-  useEffect(() => {
-    let result = [...jobs];
+  // useEffect(() => {
+  //   let result = [...jobs];
 
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      result = result.filter(
-        (job) =>
-          job.title?.toLowerCase().includes(term) ||
-          job.company?.toLowerCase().includes(term) ||
-          job.location?.toLowerCase().includes(term),
-      );
+  //   if (searchTerm) {
+  //     const term = searchTerm.toLowerCase();
+  //     result = result.filter(
+  //       (job) =>
+  //         job.title?.toLowerCase().includes(term) ||
+  //         job.company?.toLowerCase().includes(term) ||
+  //         job.location?.toLowerCase().includes(term),
+  //     );
+  //   }
+
+  //   if (filterType !== "All") {
+  //     result = result.filter((job) => job.type === filterType);
+  //   }
+
+  //   setFilteredJobs(result);
+  // }, [searchTerm, filterType, jobs]);
+
+  const router = useRouter()
+
+  useEffect(()=> {
+    const sp = new URLSearchParams()
+    if (searchTerm)
+    {
+      sp.set('search', searchTerm)
+    }
+    
+    if (filterType !== 'All')
+    {
+      sp.set('jobtype', filterType)
     }
 
-    if (filterType !== "All") {
-      result = result.filter((job) => job.type === filterType);
-    }
+    router.push(`?${sp.toString()}`)
 
-    setFilteredJobs(result);
-  }, [searchTerm, filterType, jobs]);
+  },[filterType,router,searchTerm])
 
   return (
     <div className="w-11/12 mx-auto min-h-screen bg-zinc-950 p-6 lg:p-10">

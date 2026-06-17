@@ -1,9 +1,13 @@
 import JobsPage from './JobsPage';
 
-const jobsPageServer =async () => {
+const jobsPageServer =async ({searchParams}) => {
 
   let allJobs = [];
   let error = '';
+
+  const filter = await searchParams
+  console.log(filter);
+  
   try
   {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/job/all`)
@@ -22,7 +26,7 @@ const jobsPageServer =async () => {
 
   return (
     <div>
-      <JobsPage allJobs={allJobs} err={error} />
+      <JobsPage allJobs={allJobs} err={error} filter={filter} />
     </div>
   );
 };

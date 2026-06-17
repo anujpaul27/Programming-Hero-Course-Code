@@ -66,7 +66,7 @@ export default function RecentJobs({jobsData,err}) {
         </div>
       )}
 
-      {jobs.length === 0 && !loading && (
+      {jobs?.length === 0 && (
         <div className="text-center py-12 text-zinc-500">
           No recent jobs available
         </div>

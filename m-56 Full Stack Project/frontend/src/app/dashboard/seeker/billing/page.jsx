@@ -22,6 +22,7 @@ export default function Billing() {
               <div>
                 <h2 className="text-2xl font-bold">{currentPlan}</h2>
                 <p className="text-success">Active</p>
+                <p className="text-primary ">User</p>
               </div>
             </div>
 
