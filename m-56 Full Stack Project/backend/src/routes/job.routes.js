@@ -16,7 +16,7 @@ router.post('/create', createJobPost);
  * @desc    Get all job posts
  * @access  Private
  */
-router.get('/all', verifyToken, getAllJobPosts);
+router.post('/all', getAllJobPosts);
 
 /**
  * @route   GET /api/job/:id

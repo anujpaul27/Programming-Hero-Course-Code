@@ -37,7 +37,20 @@ async function createJobPost (req,res)
 async function getAllJobPosts (req,res)
 {
     try {
-        const jobPosts = await jobPostModel.find();
+        const query = {}
+        if (req.body.jobtype)
+        {
+            query.type = req.body.jobtype;
+        }
+
+        {
+            query.$or = [
+                {title: {$regex:req.body.search,$options:'i'}},
+                {description: {$regex:req.body.search,$options:'i'}},
+            ]
+        }
+        console.log(query)
+        const jobPosts = await jobPostModel.find(query);
         res.status(200).json({
             success: true,
             message: 'Job posts retrieved successfully',
