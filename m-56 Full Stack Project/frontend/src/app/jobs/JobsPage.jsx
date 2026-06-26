@@ -11,35 +11,11 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function JobsPage({allJobs,err,filter}) {
-  const [jobs, setJobs] = useState(allJobs);
-  const [filteredJobs, setFilteredJobs] = useState(allJobs);
+export default function JobsPage({jobs,err,filter}) {
   const [searchTerm, setSearchTerm] = useState(filter.search || "")
   const [filterType, setFilterType] = useState(filter.jobtype || "All");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(err);
-
-
-  // Filter & Search
-  // useEffect(() => {
-  //   let result = [...jobs];
-
-  //   if (searchTerm) {
-  //     const term = searchTerm.toLowerCase();
-  //     result = result.filter(
-  //       (job) =>
-  //         job.title?.toLowerCase().includes(term) ||
-  //         job.company?.toLowerCase().includes(term) ||
-  //         job.location?.toLowerCase().includes(term),
-  //     );
-  //   }
-
-  //   if (filterType !== "All") {
-  //     result = result.filter((job) => job.type === filterType);
-  //   }
-
-  //   setFilteredJobs(result);
-  // }, [searchTerm, filterType, jobs]);
 
   const router = useRouter()
 
@@ -106,8 +82,8 @@ export default function JobsPage({allJobs,err,filter}) {
         {/* Jobs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence>
-            {filteredJobs.length > 0
-              ? filteredJobs.map((job, index) => (
+            {jobs.length > 0
+              ? jobs.map((job, index) => (
                   <motion.div
                     key={job._id}
                     initial={{ opacity: 0, y: 30 }}
