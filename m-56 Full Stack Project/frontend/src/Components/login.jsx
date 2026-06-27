@@ -13,11 +13,11 @@ const loginPage = () => {
               <input
                 type="email"
                 class="input validator w-full"
-                placeholder="email@example.com"
+                placeholder="name@gamil.com"
                 required
               />
               <div class="validator-hint">
-                Please enter a valid email address
+                Enter Valid Email 
               </div>
             </fieldset>
 
@@ -28,7 +28,7 @@ const loginPage = () => {
                 class="input validator w-full"
                 placeholder="password"
                 required
-                minlength="8"
+                minlength="10"
               />
               <div class="validator-hint">Must be at least 8 characters</div>
               <div class="mt-1">
